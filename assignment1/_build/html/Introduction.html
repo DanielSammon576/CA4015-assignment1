@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Analysis &#8212; Iowa Gambling Task</title>
+    <title>Iowa Gambling Task &#8212; Iowa Gambling Task</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Conclusion" href="mymarkdownfile.html" />
-    <link rel="prev" title="Introduction: Iowa Gambling Task" href="intro.html" />
+    <link rel="next" title="Data Analysis" href="DataAnalysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -87,15 +86,15 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Introduction: Iowa Gambling Task
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   Iowa Gambling Task
   </a>
  </li>
 </ul>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="DataAnalysis.html">
    <strong>
     Data Analysis
    </strong>
@@ -149,9 +148,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/data-analysis.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Introduction.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -169,7 +168,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdata-analysis.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FIntroduction.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -185,6 +184,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Introduction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -196,17 +212,17 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction-to-data">
-   Introduction to Data
+  <a class="reference internal nav-link" href="#introduction">
+   <strong>
+    Introduction
+   </strong>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#is-there-a-difference-between-younger-older-mean-population">
-   Is there a difference between younger/older mean population?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#clustering-techniques">
+   <strong>
+    Clustering Techniques
+   </strong>
   </a>
  </li>
 </ul>
@@ -220,20 +236,23 @@
         
               <div>
                 
-  <div class="section" id="data-analysis">
-<h1><strong>Data Analysis</strong><a class="headerlink" href="#data-analysis" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction-to-data">
-<h2>Introduction to Data<a class="headerlink" href="#introduction-to-data" title="Permalink to this headline">¶</a></h2>
-<p>The data set at hand is divided into three different trials 95-trial, 100-trial and a 150-trial. There is three seperate csv files per trial. Let’s take the 95-trial we have a csv file that records the participants choices, a csv file that records the participants losses and a csv file that records the participants winnings.</p>
-<p>As all of the data isn’t gathered from one study it is in fact gathered from 10 seperate studies we are also given a fourth csv file which maps what study each participant took part in.</p>
-<p>The studies differ in many ways from the size of the actual trials to the age demographics of the studies.</p>
+  <div class="section" id="iowa-gambling-task">
+<h1><strong>Iowa Gambling Task</strong><a class="headerlink" href="#iowa-gambling-task" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2><strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The main idea behind the Iowa Gambling Task is test participants decision making using four cards. The participants taking part in the game have a choice of four cards (A,B,C,D) depending on the card choosen and chance the participants can gain or lose money.</p>
+<p><img alt="" src="https://www.online-casinos.com/wp-content/uploads/2019/11/iowa-gambling-task-setup.jpg" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The task was originally developed to detect problems that participants may have been having with their ventromedial prefrontal cortex</p>
 </div>
-<div class="section" id="is-there-a-difference-between-younger-older-mean-population">
-<h2>Is there a difference between younger/older mean population?<a class="headerlink" href="#is-there-a-difference-between-younger-older-mean-population" title="Permalink to this headline">¶</a></h2>
-<p>For my research I am going to take a deeper look at the clustering between two studies, the studies differ in one main way in that the mean ages of the two studies are X and X respectively.</p>
+<p>Each deck has a different probability of winning/losing. This means that there is one deck either {A,B,C,D} that is more favourable to the participants than the others. The idea behind the game is that depending on how one plays the game allows the observer to figure out psychological attributes that they might have.</p>
 </div>
-<div class="section" id="id1">
-<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="clustering-techniques">
+<h2><strong>Clustering Techniques</strong><a class="headerlink" href="#clustering-techniques" title="Permalink to this headline">¶</a></h2>
+<p>For the purpose of this assignment I will be focusing mainly on the k-means clustering technique. K-means aims at partitioning x abservations into y clusters where each cluster is calculated based on a common mean.</p>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </div>
 
@@ -266,20 +285,11 @@
 
 <div class='prev-next-bottom'>
     
-    <div id="prev">
-        <a class="left-prev" href="intro.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><strong>Introduction: Iowa Gambling Task</strong></p>
-            </div>
-        </a>
-    </div>
      <div id="next">
-        <a class="right-next" href="mymarkdownfile.html" title="next page">
+        <a class="right-next" href="DataAnalysis.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><strong>Conclusion</strong></p>
+                <p class="prevnext-title"><strong>Data Analysis</strong></p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

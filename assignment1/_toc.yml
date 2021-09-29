@@ -2,9 +2,9 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: Introduction
 chapters:
 - file: markdown
-- file: data-analysis
+- file: DataAnalysis
 - file: clustering
 - file: mymarkdownfile
