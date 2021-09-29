@@ -6,4 +6,5 @@ root: intro
 chapters:
 - file: markdown
 - file: data-analysis
+- file: clustering
 - file: mymarkdownfile
