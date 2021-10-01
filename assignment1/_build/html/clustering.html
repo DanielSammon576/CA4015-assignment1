@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; Iowa Gambling Task</title>
+    <title>Clustering &#8212; Iowa Gambling Task</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -93,11 +93,18 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="DataAnalysis.html">
    <strong>
     Data Analysis
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   <strong>
+    Clustering
    </strong>
   </a>
  </li>
@@ -207,14 +214,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -223,7 +222,9 @@
         
               <div>
                 
-  <div class="cell docutils container">
+  <div class="section" id="clustering">
+<h1><strong>Clustering</strong><a class="headerlink" href="#clustering" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -246,7 +247,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_6996</span><span class="o">/</span><span class="mf">4145306785.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_6048</span><span class="o">/</span><span class="mf">4145306785.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
@@ -382,7 +383,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>4</td>
       <td>4</td>
-      <td>4</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>Subj_95</th>
@@ -406,7 +407,7 @@ Length: 150, dtype: object
       <td>3</td>
       <td>3</td>
       <td>3</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>Subj_96</th>
@@ -430,7 +431,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>1</td>
       <td>4</td>
-      <td>2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>Subj_97</th>
@@ -454,7 +455,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>4</td>
       <td>4</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>Subj_98</th>
@@ -478,7 +479,7 @@ Length: 150, dtype: object
       <td>2</td>
       <td>4</td>
       <td>2</td>
-      <td>4</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -558,7 +559,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>4</td>
       <td>4</td>
-      <td>4</td>
+      <td>2</td>
       <td>-3.300828</td>
       <td>4.664431</td>
     </tr>
@@ -582,7 +583,7 @@ Length: 150, dtype: object
       <td>3</td>
       <td>3</td>
       <td>3</td>
-      <td>2</td>
+      <td>3</td>
       <td>5.796755</td>
       <td>0.908372</td>
     </tr>
@@ -606,7 +607,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>1</td>
       <td>4</td>
-      <td>2</td>
+      <td>0</td>
       <td>5.370254</td>
       <td>2.093799</td>
     </tr>
@@ -630,7 +631,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>4</td>
       <td>4</td>
-      <td>2</td>
+      <td>1</td>
       <td>1.231908</td>
       <td>0.832434</td>
     </tr>
@@ -654,7 +655,7 @@ Length: 150, dtype: object
       <td>2</td>
       <td>4</td>
       <td>2</td>
-      <td>4</td>
+      <td>2</td>
       <td>-4.888542</td>
       <td>-1.482300</td>
     </tr>
@@ -700,35 +701,35 @@ Length: 150, dtype: object
     <tr>
       <th>0</th>
       <td>Subj_1</td>
-      <td>4</td>
+      <td>2</td>
       <td>-3.765903</td>
       <td>-1.825176</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Subj_2</td>
-      <td>4</td>
+      <td>1</td>
       <td>-5.743656</td>
       <td>1.383064</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Subj_3</td>
-      <td>2</td>
+      <td>3</td>
       <td>4.381635</td>
       <td>6.055623</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Subj_4</td>
-      <td>1</td>
+      <td>0</td>
       <td>10.219133</td>
       <td>-5.785868</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Subj_5</td>
-      <td>1</td>
+      <td>0</td>
       <td>12.807958</td>
       <td>-0.439170</td>
     </tr>
@@ -747,7 +748,7 @@ Length: 150, dtype: object
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;X&#39;, ylabel=&#39;Y&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/clustering_7_1.png" src="_images/clustering_7_1.png" />
+<img alt="_images/clustering_8_1.png" src="_images/clustering_8_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1177,7 +1178,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>4</td>
       <td>4</td>
-      <td>4</td>
+      <td>2</td>
       <td>-3.300828</td>
       <td>4.664431</td>
     </tr>
@@ -1201,7 +1202,7 @@ Length: 150, dtype: object
       <td>3</td>
       <td>3</td>
       <td>3</td>
-      <td>2</td>
+      <td>3</td>
       <td>5.796755</td>
       <td>0.908372</td>
     </tr>
@@ -1225,7 +1226,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>1</td>
       <td>4</td>
-      <td>2</td>
+      <td>0</td>
       <td>5.370254</td>
       <td>2.093799</td>
     </tr>
@@ -1249,7 +1250,7 @@ Length: 150, dtype: object
       <td>4</td>
       <td>4</td>
       <td>4</td>
-      <td>2</td>
+      <td>1</td>
       <td>1.231908</td>
       <td>0.832434</td>
     </tr>
@@ -1273,7 +1274,7 @@ Length: 150, dtype: object
       <td>2</td>
       <td>4</td>
       <td>2</td>
-      <td>4</td>
+      <td>2</td>
       <td>-4.888542</td>
       <td>-1.482300</td>
     </tr>
@@ -1331,30 +1332,30 @@ Length: 150, dtype: object
       <th>0</th>
       <td>Subj_1</td>
       <td>46</td>
-      <td>37</td>
+      <td>38</td>
       <td>29</td>
-      <td>39</td>
+      <td>38</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Subj_2</td>
-      <td>40</td>
+      <td>41</td>
       <td>57</td>
       <td>19</td>
-      <td>35</td>
+      <td>34</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Subj_3</td>
       <td>19</td>
-      <td>36</td>
-      <td>8</td>
+      <td>35</td>
+      <td>9</td>
       <td>88</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Subj_4</td>
-      <td>19</td>
+      <td>18</td>
       <td>11</td>
       <td>10</td>
       <td>111</td>
@@ -1362,7 +1363,7 @@ Length: 150, dtype: object
     <tr>
       <th>4</th>
       <td>Subj_5</td>
-      <td>14</td>
+      <td>13</td>
       <td>1</td>
       <td>1</td>
       <td>135</td>
@@ -1370,6 +1371,7 @@ Length: 150, dtype: object
   </tbody>
 </table>
 </div></div></div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
