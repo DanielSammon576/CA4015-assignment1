@@ -1,3 +1,3 @@
-# CA4015
+# Iowa Gambling Task
 
-Git repo for advanced machine learning
+Link to jupyter book can be found [here :)](file:///C:/daniel/ca4015/assignment1/_build/html/Introduction.html)
