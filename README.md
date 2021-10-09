@@ -4,7 +4,7 @@ Link to jupyter book can be found [here :)](file:///C:/daniel/ca4015/assignment1
 
 # Current Blockers
 
-Jupyter book runs on python3.7, jupyter book runs on 3.8 and won't run on 3.7. 
+Jupyter book runs on python3.7, jupyter notebook runs on 3.8 and won't run on 3.7. 
 This means the code seems as if it is failing in the jupyter book.
 
 # Tasks still left to finish
