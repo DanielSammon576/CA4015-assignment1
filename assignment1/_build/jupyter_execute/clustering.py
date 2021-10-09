@@ -14,149 +14,125 @@ import matplotlib.pyplot as plt
 from numpy import arange
 
 import sklearn
+from sklearn import preprocessing
+from sklearn.preprocessing import minmax_scale
 from sklearn.cluster import KMeans
 from mpl_toolkits.mplot3d import Axes3D
 
 import sklearn.metrics as sm
 from sklearn.decomposition import PCA
+from sklearn.preprocessing import MinMaxScaler
 from sklearn import datasets
 from sklearn.metrics import confusion_matrix, classification_report
-
-
-# In[2]:
-
-
-#Focusing on 100 choices from 200 subjects as a first step
-choice = pd.read_csv('IGTdataSteingroever2014\choice_150.csv')
-
-
-# In[3]:
-
-
-#All data types are the same and the original matrix is clean
-choice.dtypes
 
 
 # In[4]:
 
 
-cluster = KMeans(n_clusters = 5)
-cols = choice.columns[:]
-cols
-
-
-# In[5]:
-
-
-choice["cluster"] = cluster.fit_predict(choice[choice.columns[1:]])
-choice.head()
-choice.tail()
-
-
-# In[6]:
-
-
-pca = PCA(n_components = 2)
-choice["x"] = pca.fit_transform(choice[cols])[:,0]
-choice["y"] = pca.fit_transform(choice[cols])[:,1]
-choice = choice.reset_index()
-choice.tail()
+clustering = pd.read_csv('Data\clustering.csv')
+cluster = KMeans(n_clusters = 4)
+cols = clustering.columns[:]
+clustering.drop(clustering.columns[[0]], axis = 1, inplace = True)
+clustering.head()
 
 
 # In[7]:
 
 
-df = choice[["index", "cluster", "x", "y"]]
-df.columns = ["Subjects", "Cluster", "X", "Y"]
-df.head()
+y_predicted = cluster.fit_predict(clustering[["Difference","Total-B/D"]])
+clustering["cluster"] = y_predicted
+clustering.head()
 
 
 # In[8]:
 
 
-import seaborn as sns
-sns.scatterplot(data=df,x="X", y="Y", hue="Cluster")
+df1 = clustering[clustering.cluster==0]
+df2 = clustering[clustering.cluster==1]
+df3 = clustering[clustering.cluster==2]
+df4 = clustering[clustering.cluster==3]
 
+plt.scatter(df1.Difference, df1["Total-B/D"], color='green')
+plt.scatter(df2.Difference, df2["Total-B/D"], color='red')
+plt.scatter(df3.Difference, df3["Total-B/D"], color='black')
+plt.scatter(df4.Difference, df4["Total-B/D"], color='blue')
 
-# In[9]:
-
-
-#Now that we have looked at the different choices that have been made we can take a look at the results
-win = pd.read_csv('IGTdataSteingroever2014\wi_150.csv')
-loss = pd.read_csv("IGTdataSteingroever2014\lo_150.csv")
-index = pd.read_csv("IGTdataSteingroever2014\index_150.csv")
+plt.xlabel("Difference")
+plt.ylabel("Total-B/D")
+plt.legend()
 
 
 # In[10]:
 
 
-win.tail(5)
+clustering[['Difference','Total-B/D']] = minmax_scale(clustering[['Difference','Total-B/D']])
+clustering.head()
 
 
 # In[11]:
 
 
-loss.tail(5)
+km = KMeans(n_clusters=4)
+y_predicted = km.fit_predict(clustering[["Difference", "Total-B/D"]])
 
 
 # In[12]:
 
 
-choice.tail(5)
+clustering["cluster"] = y_predicted
+clustering.head()
 
 
 # In[13]:
 
 
-choice_new = choice.apply(pd.Series.value_counts, axis=1)
-choice_new["SubjectId"] = choice["index"]
-cols = list(choice_new.columns)
-cols = [cols[-1]] + cols[:-1]
-choice_new = choice_new[cols]
-choice_new.drop(choice_new.iloc[:, 5:], inplace = True, axis = 1)
-choice_new.columns = ["Subject_id", "A", "B", "C", "D"]
-choice_new.fillna(value = 0, inplace = True)
-choice_new.A = choice_new.A.astype(int)
-choice_new.B = choice_new.B.astype(int)
-choice_new.C = choice_new.C.astype(int)
-choice_new.D = choice_new.D.astype(int)
-choice_new.head()
+km.cluster_centers_
 
 
-# In[ ]:
+# In[15]:
 
 
+df1 = clustering[clustering.cluster==0]
+df2 = clustering[clustering.cluster==1]
+df3 = clustering[clustering.cluster==2]
+df4 = clustering[clustering.cluster==3]
+
+plt.scatter(df1.Difference, df1["Total-B/D"], color='green')
+plt.scatter(df2.Difference, df2["Total-B/D"], color='red')
+plt.scatter(df3.Difference, df3["Total-B/D"], color='black')
+plt.scatter(df4.Difference, df4["Total-B/D"], color='blue')
+
+plt.scatter(km.cluster_centers_[:,0], km.cluster_centers_[:,1], color="orange", marker="*", label="centroid")
+
+plt.xlabel("Difference")
+plt.ylabel("Total-B/D")
+plt.legend()
 
 
-
-# In[ ]:
-
+# In[16]:
 
 
+k_rng = range(1,10)
+sse = []
+for k in k_rng:
+    km = KMeans(n_clusters=k)
+    km.fit(clustering[["Difference", "Total-B/D"]])
+    sse.append(km.inertia_)
 
 
-# In[ ]:
+# In[17]:
 
 
+sse
 
 
-
-# In[ ]:
-
+# In[19]:
 
 
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
+plt.xlabel("K")
+plt.ylabel("Sum of squared error")
+plt.plot(k_rng, sse)
+#This is indictaing that the optimum number of clusters is 4 but 3 is also a reasonable choice
 
 
 # In[ ]:

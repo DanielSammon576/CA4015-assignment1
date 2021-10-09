@@ -18,38 +18,8 @@
 
 # 
 
-# 
-
 # ### **Clustering Techniques**
 
-# For the purpose of this assignment I will be focusing mainly on the k-means clustering technique. K-means aims at partitioning x abservations into y clusters where each cluster is calculated based on a common mean.
+# For the purpose of this assignment I will be focusing mainly on the k-means clustering technique. K-means aims at partitioning x abservations into y clusters where each cluster is calculated based on a common mean. I will also run the elbow method of the dataset. The elbow method runs k-means clustering on the dataset for a range of values (say from 1-10) and then for each value of k computes an average score for all clusters. This then basically tells us what the optimum amount of clusters.
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+# 

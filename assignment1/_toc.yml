@@ -4,7 +4,6 @@
 format: jb-book
 root: Introduction
 chapters:
-- file: markdown
-- file: DataAnalysis
-- file: clustering
-- file: mymarkdownfile
+- file: Data Preparation and Analysis
+- file: Whole_clustering
+- file: Wood_clustering
