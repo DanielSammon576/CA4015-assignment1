@@ -188,7 +188,9 @@ subject.tail(20)
 # In[12]:
 
 
-#This is the dataset that we will be using for our clustering
+#This is the dataset that we will be using for our clustering of the wood study
 subject.to_csv("Data/clustering.csv")
+
+#This is the dataset we will be using for the whole study clustering
 final.to_csv("Data/whole_clustering.csv")
 
