@@ -185,9 +185,11 @@ win100['Total'] = win100.sum(axis=1)
 loss100['Total'] = loss100.sum(axis=1)
 
 
+# 
+
 # The subject dataframe I will use to cluster only the Wood study. This study was ran on two seperate groups with different ages so will hopefully provide interesting results.
 
-# In[12]:
+# In[15]:
 
 
 subject = pd.DataFrame(columns=["Subjects"])
@@ -199,10 +201,11 @@ subject = subject[subject.Study == "Wood"]
 subject["AgeProfile"] = ""
 subject.AgeProfile.values[:91] = "Young"
 subject.AgeProfile.values[91:] = "Old"
-subject.tail(20)
+print("Subject dataframe")
+subject.head(10)
 
 
-# The dataset had a larger representation of younger people, from the scatter plot above you can clearly see that there are more older nodes making extreme loses and percentage wise more older people losing money. From my initial data analysis it seems as though in general the younger people were quicker to figure out that the B card and the D card were
+# The dataset had a larger representation of younger people, using the dataframe above I will inspect the difference between younger and older both in profit margins and how quick the two age groups were to realise that some cards are more benficial then others. I use different analysis techniques including scatter graphs and k-means clustering to evaluate this hypothesis.
 
 # In[13]:
 

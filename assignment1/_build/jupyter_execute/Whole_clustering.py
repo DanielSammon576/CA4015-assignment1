@@ -34,12 +34,11 @@ clustering = pd.read_csv('Data\whole_clustering.csv')
 cluster = KMeans(n_clusters = 4)
 cols = clustering.columns[:]
 clustering.drop(clustering.columns[[0]], axis = 1, inplace = True)
-clustering.head()
 
 
-# So for my clustering analysis of the whole study I would like to see if the studies as a whole have interesting cluster patterns. To do this step I will have to map an integer value to the study so that clustering can take place.
+# So for my clustering analysis of the whole study I would like to see if the studies as a whole have interesting cluster patterns. To do this step I will have to map an integer value to the study so that clustering can take place. I am focusing on the profit/loss margins of the individual subjects and I am also going to look at their total zeros received. This tells us how often the subjects didn't lose money. The lower this figure is indicates that the subjects were losing money more regularly.
 
-# In[4]:
+# In[3]:
 
 
 y_predicted = cluster.fit_predict(clustering[["Margin","count_zeros"]])
@@ -47,7 +46,9 @@ clustering["cluster"] = y_predicted
 clustering.head()
 
 
-# In[5]:
+# This is the results of our clustering based on the amount of zeros each subject chose and their respective margin of profit and loss.
+
+# In[4]:
 
 
 df1 = clustering[clustering.cluster==0]
@@ -62,37 +63,29 @@ plt.scatter(df4.Margin, df4.count_zeros, color='blue')
 
 plt.xlabel("Margin")
 plt.ylabel("count_zeros")
-plt.legend()
 
 
-# In[7]:
+# Below we can see the dataframe after normalization has taken place.
+
+# In[5]:
 
 
 clustering[['Margin','count_zeros']] = minmax_scale(clustering[['Margin','count_zeros']])
-clustering.head()
-
-
-# In[8]:
-
-
 km = KMeans(n_clusters=4)
 y_predicted = km.fit_predict(clustering[["Margin", "count_zeros"]])
-
-
-# In[9]:
-
-
 clustering["cluster"] = y_predicted
 clustering.head()
 
 
-# In[10]:
+# In[6]:
 
 
 km.cluster_centers_
 
 
-# In[11]:
+# The below graph differs from the original in two mains ways. As I have mentioned already the data is now standarized, this should imrove the overall clustering of the dataset. I have also calculated the centroids of the clusters and added them to the graph giving us some added information.
+
+# In[7]:
 
 
 df1 = clustering[clustering.cluster==0]
@@ -112,7 +105,7 @@ plt.ylabel("count_zeros")
 plt.legend()
 
 
-# In[12]:
+# In[8]:
 
 
 k_rng = range(1,10)
@@ -123,13 +116,9 @@ for k in k_rng:
     sse.append(km.inertia_)
 
 
-# In[13]:
+# Below is a diagram of the elbow method. This enable us to find the optimum number of clusters in the dataset. It is the most popular method when dealing with k means clustering to calculate this. From the graph below you can the elbow starts to bend at 3 indicating that the optimum number of clusters would be three and that the results may improve with a correction.
 
-
-sse
-
-
-# In[14]:
+# In[9]:
 
 
 plt.xlabel("K")
@@ -137,7 +126,9 @@ plt.ylabel("Sum of squared error")
 plt.plot(k_rng, sse)
 
 
-# In[18]:
+# Here we have an informative scatterplot of the different studies and the participants. You can clearly see that the subjects from both Steingrover and Wetzels more often than not did not lose money and still gained a respective amount of money. Another interesting observation is that some of the participants that were not receiving many zeros, so as a result were losing money in some cases still gained a large amount of money. This tells us that these participants found the more beneficial cards but reaped the downside to those cards also.
+
+# In[10]:
 
 
 sns.scatterplot(data=clustering, x="Margin", y="count_zeros", hue="Study")

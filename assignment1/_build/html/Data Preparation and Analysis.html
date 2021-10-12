@@ -115,6 +115,13 @@
    </strong>
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Conclusion.html">
+   <strong>
+    Conclusion
+   </strong>
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -267,43 +274,11 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Focusing on 100 choices from 200 subjects as a first step</span>
-<span class="n">choice95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\choice_95.csv&#39;</span><span class="p">)</span>
-<span class="n">win95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\wi_95.csv&#39;</span><span class="p">)</span>
-<span class="n">loss95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\lo_95.csv&quot;</span><span class="p">)</span>
-<span class="n">index95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\index_95.csv&quot;</span><span class="p">)</span>
-<span class="n">choice100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\choice_100.csv&#39;</span><span class="p">)</span>
-<span class="n">win100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\wi_100.csv&#39;</span><span class="p">)</span>
-<span class="n">loss100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\lo_100.csv&quot;</span><span class="p">)</span>
-<span class="n">index100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\index_100.csv&quot;</span><span class="p">)</span>
-<span class="n">choice150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\choice_150.csv&#39;</span><span class="p">)</span>
-<span class="n">win150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\wi_150.csv&#39;</span><span class="p">)</span>
-<span class="n">loss150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\lo_150.csv&quot;</span><span class="p">)</span>
-<span class="n">index150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\index_150.csv&quot;</span><span class="p">)</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell tag_remove-input docutils container">
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeros95</span> <span class="o">=</span> <span class="n">loss95</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">zeros95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zeros95</span><span class="p">)</span>
-<span class="n">zeros95</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span>
-
-<span class="n">zeros100</span> <span class="o">=</span> <span class="n">loss100</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">zeros100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zeros100</span><span class="p">)</span>
-<span class="n">zeros100</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span>
-
-<span class="n">zeros150</span> <span class="o">=</span> <span class="n">loss150</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">zeros150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zeros150</span><span class="p">)</span>
-<span class="n">zeros150</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 <span class="n">df100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -430,7 +405,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1fe5bf251c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x190b9cc2130&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Preparation and Analysis_11_1.png" src="_images/Data Preparation and Analysis_11_1.png" />
@@ -465,68 +440,18 @@
 </div>
 </div>
 <p>From my above data analysis I can see that one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.</p>
-<div class="cell tag_{ tag_&quot;tags&quot;: tag_[ tag_&quot;hide-input&quot; tag_] tag_} docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">choice_new</span> <span class="o">=</span> <span class="n">choice100</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="o">.</span><span class="n">value_counts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">choice_new</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>
-<span class="n">choice_new</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">choice_new</span><span class="o">.</span><span class="n">A</span> <span class="o">=</span> <span class="n">choice_new</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">choice_new</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="n">choice_new</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">choice_new</span><span class="o">.</span><span class="n">C</span> <span class="o">=</span> <span class="n">choice_new</span><span class="o">.</span><span class="n">C</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">choice_new</span><span class="o">.</span><span class="n">D</span> <span class="o">=</span> <span class="n">choice_new</span><span class="o">.</span><span class="n">D</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-<span class="n">choice_new</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index100</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell tag_remove-input docutils container">
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">choice_new</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice_new</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">choice_new</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">young</span> <span class="o">=</span> <span class="n">choice_new</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">91</span><span class="p">]</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">young</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">young</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">young</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">young</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="n">c</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span><span class="n">d</span><span class="p">}]</span>
-<span class="n">young_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">young_stats</span> <span class="o">=</span> <span class="n">young_stats</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Counts&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old</span> <span class="o">=</span> <span class="n">choice_new</span><span class="p">[</span><span class="mi">91</span><span class="p">:]</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-<span class="n">d</span> <span class="o">=</span> <span class="n">old</span><span class="p">[</span><span class="s2">&quot;D&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;A&#39;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">:</span> <span class="n">b</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">:</span><span class="n">c</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span><span class="n">d</span><span class="p">}]</span>
-<span class="n">old_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">old_stats</span> <span class="o">=</span> <span class="n">old_stats</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;Counts&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">win100</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win100</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">loss100</span><span class="p">[</span><span class="s1">&#39;Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss100</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<div class="cell tag_remove-input docutils container">
 </div>
 <p>The subject dataframe I will use to cluster only the Wood study. This study was ran on two seperate groups with different ages so will hopefully provide interesting results.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Subjects&quot;</span><span class="p">])</span>
 <span class="n">subject</span><span class="p">[</span><span class="s2">&quot;Subjects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win100</span><span class="o">.</span><span class="n">index</span>
@@ -537,11 +462,15 @@
 <span class="n">subject</span><span class="p">[</span><span class="s2">&quot;AgeProfile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
 <span class="n">subject</span><span class="o">.</span><span class="n">AgeProfile</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Young&quot;</span>
 <span class="n">subject</span><span class="o">.</span><span class="n">AgeProfile</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">91</span><span class="p">:]</span> <span class="o">=</span> <span class="s2">&quot;Old&quot;</span>
-<span class="n">subject</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Subject dataframe&quot;</span><span class="p">)</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Subject dataframe
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -569,170 +498,90 @@
   </thead>
   <tbody>
     <tr>
-      <th>449</th>
-      <td>Subj_450</td>
-      <td>-1420</td>
-      <td>50.0</td>
+      <th>316</th>
+      <td>Subj_317</td>
+      <td>-320</td>
+      <td>56.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>450</th>
-      <td>Subj_451</td>
-      <td>-595</td>
-      <td>60.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>451</th>
-      <td>Subj_452</td>
-      <td>-470</td>
-      <td>51.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>452</th>
-      <td>Subj_453</td>
-      <td>2360</td>
-      <td>33.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>453</th>
-      <td>Subj_454</td>
-      <td>-565</td>
-      <td>66.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>454</th>
-      <td>Subj_455</td>
-      <td>-1510</td>
-      <td>57.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>455</th>
-      <td>Subj_456</td>
-      <td>-2475</td>
-      <td>77.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>456</th>
-      <td>Subj_457</td>
-      <td>-1860</td>
-      <td>75.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>457</th>
-      <td>Subj_458</td>
-      <td>-2330</td>
+      <th>317</th>
+      <td>Subj_318</td>
+      <td>-1030</td>
       <td>63.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>458</th>
-      <td>Subj_459</td>
-      <td>2480</td>
-      <td>73.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>459</th>
-      <td>Subj_460</td>
-      <td>-3290</td>
-      <td>73.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>460</th>
-      <td>Subj_461</td>
-      <td>-3290</td>
-      <td>73.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>461</th>
-      <td>Subj_462</td>
-      <td>-720</td>
-      <td>73.0</td>
-      <td>Wood</td>
-      <td>Old</td>
-    </tr>
-    <tr>
-      <th>462</th>
-      <td>Subj_463</td>
-      <td>-2000</td>
+      <th>318</th>
+      <td>Subj_319</td>
+      <td>-1850</td>
       <td>59.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>463</th>
-      <td>Subj_464</td>
-      <td>-1570</td>
-      <td>64.0</td>
+      <th>319</th>
+      <td>Subj_320</td>
+      <td>-775</td>
+      <td>54.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>464</th>
-      <td>Subj_465</td>
-      <td>2400</td>
-      <td>70.0</td>
+      <th>320</th>
+      <td>Subj_321</td>
+      <td>-1600</td>
+      <td>65.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>465</th>
-      <td>Subj_466</td>
-      <td>-1035</td>
+      <th>321</th>
+      <td>Subj_322</td>
+      <td>-550</td>
       <td>52.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>466</th>
-      <td>Subj_467</td>
-      <td>-2375</td>
-      <td>69.0</td>
+      <th>322</th>
+      <td>Subj_323</td>
+      <td>-2210</td>
+      <td>63.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>467</th>
-      <td>Subj_468</td>
-      <td>1390</td>
-      <td>76.0</td>
+      <th>323</th>
+      <td>Subj_324</td>
+      <td>-450</td>
+      <td>53.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
     </tr>
     <tr>
-      <th>468</th>
-      <td>Subj_469</td>
-      <td>-2235</td>
-      <td>50.0</td>
+      <th>324</th>
+      <td>Subj_325</td>
+      <td>590</td>
+      <td>60.0</td>
       <td>Wood</td>
-      <td>Old</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>325</th>
+      <td>Subj_326</td>
+      <td>-380</td>
+      <td>66.0</td>
+      <td>Wood</td>
+      <td>Young</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>The dataset had a larger representation of younger people, from the scatter plot above you can clearly see that there are more older nodes making extreme loses and percentage wise more older people losing money. From my initial data analysis it seems as though in general the younger people were quicker to figure out that the B card and the D card were</p>
+<p>The dataset had a larger representation of younger people, using the dataframe above I will inspect the difference between younger and older both in profit margins and how quick the two age groups were to realise that some cards are more benficial then others. I use different analysis techniques including scatter graphs and k-means clustering to evaluate this hypothesis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This is the dataset that we will be using for our clustering of the wood study</span>

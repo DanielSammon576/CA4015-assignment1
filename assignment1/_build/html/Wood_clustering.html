@@ -51,6 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusion" href="Conclusion.html" />
     <link rel="prev" title="Whole dataset clustering" href="Whole_clustering.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -111,6 +112,13 @@
   <a class="current reference internal" href="#">
    <strong>
     Wood study clustering
+   </strong>
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Conclusion.html">
+   <strong>
+    Conclusion
    </strong>
   </a>
  </li>
@@ -248,90 +256,14 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<p>Below we have the dataset that we will be using for the clustering of the wood study. We again are using the margin between profit and loss, the percentage of time each participant choose the beneficial cards. We were able to add a column based on the age category of the participant also as each participant falls into two groups “18-40” and “61-88”. After these steps we were able to categorise each subject into cluster based on their metrics.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\clustering.csv&#39;</span><span class="p">)</span>
 <span class="n">cluster</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="n">clustering</span><span class="o">.</span><span class="n">columns</span><span class="p">[:]</span>
 <span class="n">clustering</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">clustering</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Subjects</th>
-      <th>Difference</th>
-      <th>Total-B/D</th>
-      <th>Study</th>
-      <th>AgeProfile</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Subj_317</td>
-      <td>-320</td>
-      <td>56.0</td>
-      <td>Wood</td>
-      <td>Young</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Subj_318</td>
-      <td>-1030</td>
-      <td>63.0</td>
-      <td>Wood</td>
-      <td>Young</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Subj_319</td>
-      <td>-1850</td>
-      <td>59.0</td>
-      <td>Wood</td>
-      <td>Young</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Subj_320</td>
-      <td>-775</td>
-      <td>54.0</td>
-      <td>Wood</td>
-      <td>Young</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Subj_321</td>
-      <td>-1600</td>
-      <td>65.0</td>
-      <td>Wood</td>
-      <td>Young</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">]])</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">]])</span>
 <span class="n">clustering</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_predicted</span>
 <span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -372,7 +304,7 @@
       <td>56.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>1</th>
@@ -381,7 +313,7 @@
       <td>63.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>2</th>
@@ -390,7 +322,7 @@
       <td>59.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
@@ -399,7 +331,7 @@
       <td>54.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>4</th>
@@ -408,13 +340,14 @@
       <td>65.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
+<p>Here we have the inital clustering based on the profit/loss difference and the percentage of beneficial cards picked. As you can see there are a lot of outliers in the data, the four clusters are very distinct and clear. An interesting oberservation is that the majority of the subjects that picked B/D gained the most money but on the other hand they also lost the most money.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
@@ -422,119 +355,27 @@
 <span class="n">df4</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df3</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df4</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df3</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df4</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Difference&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total-B/D&#39;)
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1ebe94dce50&gt;
-</pre></div>
-</div>
-<img alt="_images/Wood_clustering_4_2.png" src="_images/Wood_clustering_4_2.png" />
+<img alt="_images/Wood_clustering_5_1.png" src="_images/Wood_clustering_5_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Difference&#39;</span><span class="p">,</span><span class="s1">&#39;Total-B/D&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">minmax_scale</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Difference&#39;</span><span class="p">,</span><span class="s1">&#39;Total-B/D&#39;</span><span class="p">]])</span>
-<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
+<div class="cell tag_remove-input docutils container">
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Subjects</th>
-      <th>Difference</th>
-      <th>Total-B/D</th>
-      <th>Study</th>
-      <th>AgeProfile</th>
-      <th>cluster</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Subj_317</td>
-      <td>0.582222</td>
-      <td>0.525424</td>
-      <td>Wood</td>
-      <td>Young</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Subj_318</td>
-      <td>0.477037</td>
-      <td>0.644068</td>
-      <td>Wood</td>
-      <td>Young</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Subj_319</td>
-      <td>0.355556</td>
-      <td>0.576271</td>
-      <td>Wood</td>
-      <td>Young</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Subj_320</td>
-      <td>0.514815</td>
-      <td>0.491525</td>
-      <td>Wood</td>
-      <td>Young</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Subj_321</td>
-      <td>0.392593</td>
-      <td>0.677966</td>
-      <td>Wood</td>
-      <td>Young</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="s2">&quot;Total-B/D&quot;</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_predicted</span>
 <span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -576,7 +417,7 @@
       <td>0.525424</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -585,7 +426,7 @@
       <td>0.644068</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -594,7 +435,7 @@
       <td>0.576271</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -603,7 +444,7 @@
       <td>0.491525</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -618,6 +459,7 @@
 </table>
 </div></div></div>
 </div>
+<p>The array below has the centroids of our revised cluster</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span>
@@ -625,15 +467,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.68542543, 0.74713697],
-       [0.48381847, 0.48627357],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.4817284 , 0.48752354],
+       [0.68542543, 0.74713697],
        [0.84861111, 0.1970339 ],
-       [0.32816817, 0.74530463]])
+       [0.32802469, 0.75      ]])
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<p>Now we have our revised cluster, with centroids added for extra insight. This cluster makes our previous doubts a little clearer. The subjects that rarely chose B/D lost the greatest money as shown below. Also although the B/D cards were clearly the most beneficial cards they too had a chance of a major loss, which can be seen from the particpants in the top left of our below cluster.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
@@ -641,9 +484,9 @@
 <span class="n">df4</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df1</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df3</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df4</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df3</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Difference</span><span class="p">,</span> <span class="n">df4</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;brown&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;centroid&quot;</span><span class="p">)</span>
 
@@ -654,51 +497,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1ebe95fc070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x218c8aa3580&gt;
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_9_1.png" src="_images/Wood_clustering_9_1.png" />
+<img alt="_images/Wood_clustering_12_1.png" src="_images/Wood_clustering_12_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_rng</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">sse</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_rng</span><span class="p">:</span>
-    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
-    <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="s2">&quot;Total-B/D&quot;</span><span class="p">]])</span>
-    <span class="n">sse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
-</pre></div>
+<div class="cell tag_remove-output tag_remove-input docutils container">
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:881: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=1.
-  warnings.warn(
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sse</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.51271497908734,
- 7.002477933644922,
- 4.792439965393865,
- 3.389203444262832,
- 2.715272036657807,
- 2.2005444272307195,
- 1.8773169847586275,
- 1.5541505843165464,
- 1.3673663500349262]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<p>Our elbow graph does not have a dictinct breaking point. The optimum number of clusters is in the region of 3 and 4.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sum of squared error&quot;</span><span class="p">)</span>
@@ -708,13 +516,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ebe96ae970&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x218c8462fa0&gt;]
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_12_1.png" src="_images/Wood_clustering_12_1.png" />
+<img alt="_images/Wood_clustering_15_1.png" src="_images/Wood_clustering_15_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<p>Lastly I wanted to briefly touch on the performance of the different ages. The scatterplot below shows us that the older participants were the bigger lossers but also the biggest gainers. Some of the older participants were blind to the pattern of the B/D cards where others were very quick to realise the two cards that were benfitting them. The younger group were in general more near the mean of the total study.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clustering</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;AgeProfile&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
@@ -722,10 +531,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1ebe9b215e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x218c88d6b50&gt;
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_13_1.png" src="_images/Wood_clustering_13_1.png" />
+<img alt="_images/Wood_clustering_17_1.png" src="_images/Wood_clustering_17_1.png" />
 </div>
 </div>
 </div>
@@ -768,6 +577,15 @@
             </div>
         </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="Conclusion.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><strong>Conclusion</strong></p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

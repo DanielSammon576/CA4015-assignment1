@@ -115,6 +115,13 @@
    </strong>
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Conclusion.html">
+   <strong>
+    Conclusion
+   </strong>
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -249,16 +256,10 @@
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\whole_clustering.csv&#39;</span><span class="p">)</span>
-<span class="n">cluster</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">cols</span> <span class="o">=</span> <span class="n">clustering</span><span class="o">.</span><span class="n">columns</span><span class="p">[:]</span>
-<span class="n">clustering</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">clustering</span><span class="o">.</span><span class="n">columns</span><span class="p">[[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
+<div class="cell tag_remove-input docutils container">
 </div>
-</div>
+<p>So for my clustering analysis of the whole study I would like to see if the studies as a whole have interesting cluster patterns. To do this step I will have to map an integer value to the study so that clustering can take place. I am focusing on the profit/loss margins of the individual subjects and I am also going to look at their total zeros received. This tells us how often the subjects didn’t lose money. The lower this figure is indicates that the subjects were losing money more regularly.</p>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -284,6 +285,7 @@
       <th>Study</th>
       <th>Margin</th>
       <th>count_zeros</th>
+      <th>cluster</th>
     </tr>
   </thead>
   <tbody>
@@ -295,6 +297,7 @@
       <td>Fridberg</td>
       <td>1150</td>
       <td>80</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
@@ -304,6 +307,7 @@
       <td>Fridberg</td>
       <td>-675</td>
       <td>71</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -313,6 +317,7 @@
       <td>Fridberg</td>
       <td>-750</td>
       <td>76</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -322,6 +327,7 @@
       <td>Fridberg</td>
       <td>-525</td>
       <td>76</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -331,15 +337,43 @@
       <td>Fridberg</td>
       <td>100</td>
       <td>76</td>
+      <td>3</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>So for my clustering analysis of the whole study I would like to see if the studies as a whole have interesting cluster patterns. To do this step I will have to map an integer value to the study so that clustering can take place.</p>
-<div class="cell docutils container">
+<p>This is the results of our clustering based on the amount of zeros each subject chose and their respective margin of profit and loss.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df2</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df3</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df4</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Margin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;count_zeros&#39;)
+</pre></div>
+</div>
+<img alt="_images/Whole_clustering_6_1.png" src="_images/Whole_clustering_6_1.png" />
+</div>
+</div>
+<p>Below we can see the dataframe after normalization has taken place.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">minmax_scale</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]])</span>
+<span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
 <span class="n">clustering</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_predicted</span>
 <span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -380,127 +414,9 @@
       <td>5800</td>
       <td>-4650</td>
       <td>Fridberg</td>
-      <td>1150</td>
-      <td>80</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Subj_2</td>
-      <td>7250</td>
-      <td>-7925</td>
-      <td>Fridberg</td>
-      <td>-675</td>
-      <td>71</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Subj_3</td>
-      <td>7100</td>
-      <td>-7850</td>
-      <td>Fridberg</td>
-      <td>-750</td>
-      <td>76</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Subj_4</td>
-      <td>7000</td>
-      <td>-7525</td>
-      <td>Fridberg</td>
-      <td>-525</td>
-      <td>76</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Subj_5</td>
-      <td>6450</td>
-      <td>-6350</td>
-      <td>Fridberg</td>
-      <td>100</td>
-      <td>76</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">df3</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">df4</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df2</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df3</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df4</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Margin&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2874a2694f0&gt;
-</pre></div>
-</div>
-<img alt="_images/Whole_clustering_5_2.png" src="_images/Whole_clustering_5_2.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">minmax_scale</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]])</span>
-<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>Total W</th>
-      <th>Total L</th>
-      <th>Study</th>
-      <th>Margin</th>
-      <th>count_zeros</th>
-      <th>cluster</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Subj_1</td>
-      <td>5800</td>
-      <td>-4650</td>
-      <td>Fridberg</td>
       <td>0.675000</td>
       <td>0.404494</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
@@ -510,107 +426,9 @@
       <td>Fridberg</td>
       <td>0.446875</td>
       <td>0.303371</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Subj_3</td>
-      <td>7100</td>
-      <td>-7850</td>
-      <td>Fridberg</td>
-      <td>0.437500</td>
-      <td>0.359551</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Subj_4</td>
-      <td>7000</td>
-      <td>-7525</td>
-      <td>Fridberg</td>
-      <td>0.465625</td>
-      <td>0.359551</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Subj_5</td>
-      <td>6450</td>
-      <td>-6350</td>
-      <td>Fridberg</td>
-      <td>0.543750</td>
-      <td>0.359551</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_predicted</span>
-<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>index</th>
-      <th>Total W</th>
-      <th>Total L</th>
-      <th>Study</th>
-      <th>Margin</th>
-      <th>count_zeros</th>
-      <th>cluster</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Subj_1</td>
-      <td>5800</td>
-      <td>-4650</td>
-      <td>Fridberg</td>
-      <td>0.675000</td>
-      <td>0.404494</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Subj_2</td>
-      <td>7250</td>
-      <td>-7925</td>
-      <td>Fridberg</td>
-      <td>0.446875</td>
-      <td>0.303371</td>
-      <td>2</td>
-    </tr>
-    <tr>
       <th>2</th>
       <td>Subj_3</td>
       <td>7100</td>
@@ -618,7 +436,7 @@
       <td>Fridberg</td>
       <td>0.437500</td>
       <td>0.359551</td>
-      <td>2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -628,7 +446,7 @@
       <td>Fridberg</td>
       <td>0.465625</td>
       <td>0.359551</td>
-      <td>2</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -638,7 +456,7 @@
       <td>Fridberg</td>
       <td>0.543750</td>
       <td>0.359551</td>
-      <td>2</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -651,15 +469,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.69183361, 0.31542525],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.50055668, 0.34221899],
+       [0.53452744, 0.79761579],
        [0.31934307, 0.33429017],
-       [0.50055668, 0.34221899],
-       [0.53452744, 0.79761579]])
+       [0.69183361, 0.31542525]])
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<p>The below graph differs from the original in two mains ways. As I have mentioned already the data is now standarized, this should imrove the overall clustering of the dataset. I have also calculated the centroids of the clusters and added them to the graph giving us some added information.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
@@ -680,13 +499,13 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2874a378970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d90471ef10&gt;
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_10_1.png" src="_images/Whole_clustering_10_1.png" />
+<img alt="_images/Whole_clustering_11_1.png" src="_images/Whole_clustering_11_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_remove-output tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_rng</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">sse</span> <span class="o">=</span> <span class="p">[]</span>
@@ -697,34 +516,9 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:881: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=3.
-  warnings.warn(
-</pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sse</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34.96757367230577,
- 19.517832061877886,
- 11.632313671787802,
- 9.484201338109294,
- 7.899476917621609,
- 6.360525635014802,
- 5.568247840139838,
- 4.944597331027517,
- 4.377219325330844]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
+<p>Below is a diagram of the elbow method. This enable us to find the optimum number of clusters in the dataset. It is the most popular method when dealing with k means clustering to calculate this. From the graph below you can the elbow starts to bend at 3 indicating that the optimum number of clusters would be three and that the results may improve with a correction.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sum of squared error&quot;</span><span class="p">)</span>
@@ -733,13 +527,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2874a434250&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1d9047dd9d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_13_1.png" src="_images/Whole_clustering_13_1.png" />
+<img alt="_images/Whole_clustering_14_1.png" src="_images/Whole_clustering_14_1.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<p>Here we have an informative scatterplot of the different studies and the participants. You can clearly see that the subjects from both Steingrover and Wetzels more often than not did not lose money and still gained a respective amount of money. Another interesting observation is that some of the participants that were not receiving many zeros, so as a result were losing money in some cases still gained a large amount of money. This tells us that these participants found the more beneficial cards but reaped the downside to those cards also.</p>
+<div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clustering</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Study&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
@@ -747,10 +542,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2874ac0d8e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1d904cb0c70&gt;
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_14_1.png" src="_images/Whole_clustering_14_1.png" />
+<img alt="_images/Whole_clustering_16_1.png" src="_images/Whole_clustering_16_1.png" />
 </div>
 </div>
 </div>
