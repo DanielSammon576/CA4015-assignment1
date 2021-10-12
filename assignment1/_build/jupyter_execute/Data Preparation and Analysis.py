@@ -58,6 +58,22 @@ index150 = pd.read_csv("Data\index_150.csv")
 # In[3]:
 
 
+zeros95 = loss95.isin([0]).sum(axis=1)
+zeros95 = pd.DataFrame(zeros95)
+zeros95.columns = ["zeros"]
+
+zeros100 = loss100.isin([0]).sum(axis=1)
+zeros100 = pd.DataFrame(zeros100)
+zeros100.columns = ["zeros"]
+
+zeros150 = loss150.isin([0]).sum(axis=1)
+zeros150 = pd.DataFrame(zeros150)
+zeros150.columns = ["zeros"]
+
+
+# In[4]:
+
+
 df95 = pd.DataFrame()
 df100 = pd.DataFrame()
 df150 = pd.DataFrame()
@@ -83,6 +99,10 @@ df95["Margin"] = df95["Total W"] + df95["Total L"]
 df100["Margin"] = df100["Total W"] + df100["Total L"]
 df150["Margin"] = df150["Total W"] + df150["Total L"]
 
+df95["count_zeros"] = zeros95["zeros"].values
+df100["count_zeros"] = zeros100["zeros"].values
+df150["count_zeros"] = zeros150["zeros"].values
+
 df95.size + df100.size + df150.size #2468
 
 final = pd.DataFrame()
@@ -90,18 +110,17 @@ alternative = pd.DataFrame()
 alternative = df95.append(df100)
 final = alternative.append(df150)
 final.size #2468
-#final.to_csv("Data/whole_clustering.csv")
 final.head()
 
 
-# In[4]:
+# In[5]:
 
 
 sns.scatterplot(data=final, x="Total W", y="Total L", hue="Study")
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 
 
-# In[5]:
+# In[6]:
 
 
 sns.barplot(x="Study", y="Margin", data=final)
@@ -111,7 +130,7 @@ plt.xticks(rotation=45)
 
 # From my above data analysis I can see that one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.
 
-# In[6]:
+# In[7]:
 
 
 choice_new = choice100.apply(pd.Series.value_counts, axis=1)
@@ -124,13 +143,13 @@ choice_new.D = choice_new.D.astype(int)
 choice_new["Study"] = index100["Study"].values
 
 
-# In[7]:
+# In[8]:
 
 
 choice_new["Total-B/D"] = choice_new["B"] + choice_new["D"]
 
 
-# In[8]:
+# In[9]:
 
 
 young = choice_new[0:91]
@@ -145,7 +164,7 @@ young_stats = pd.DataFrame(data)
 young_stats = young_stats.rename(index={0: 'Counts'})
 
 
-# In[9]:
+# In[10]:
 
 
 old = choice_new[91:]
@@ -159,7 +178,7 @@ old_stats = pd.DataFrame(data)
 old_stats = old_stats.rename(index={0: 'Counts'})
 
 
-# In[10]:
+# In[11]:
 
 
 win100['Total'] = win100.sum(axis=1)
@@ -168,7 +187,7 @@ loss100['Total'] = loss100.sum(axis=1)
 
 # The subject dataframe I will use to cluster only the Wood study. This study was ran on two seperate groups with different ages so will hopefully provide interesting results.
 
-# In[11]:
+# In[12]:
 
 
 subject = pd.DataFrame(columns=["Subjects"])
@@ -185,7 +204,7 @@ subject.tail(20)
 
 # The dataset had a larger representation of younger people, from the scatter plot above you can clearly see that there are more older nodes making extreme loses and percentage wise more older people losing money. From my initial data analysis it seems as though in general the younger people were quicker to figure out that the B card and the D card were
 
-# In[12]:
+# In[13]:
 
 
 #This is the dataset that we will be using for our clustering of the wood study

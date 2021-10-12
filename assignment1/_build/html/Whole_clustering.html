@@ -224,12 +224,13 @@
                 
   <div class="section" id="whole-dataset-clustering">
 <h1><strong>Whole dataset clustering</strong><a class="headerlink" href="#whole-dataset-clustering" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span>
 
@@ -244,20 +245,6 @@
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_9400</span><span class="o">/</span><span class="mf">2720937782.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
 </pre></div>
 </div>
 </div>
@@ -296,6 +283,7 @@
       <th>Total L</th>
       <th>Study</th>
       <th>Margin</th>
+      <th>count_zeros</th>
     </tr>
   </thead>
   <tbody>
@@ -306,6 +294,7 @@
       <td>-4650</td>
       <td>Fridberg</td>
       <td>1150</td>
+      <td>80</td>
     </tr>
     <tr>
       <th>1</th>
@@ -314,6 +303,7 @@
       <td>-7925</td>
       <td>Fridberg</td>
       <td>-675</td>
+      <td>71</td>
     </tr>
     <tr>
       <th>2</th>
@@ -322,6 +312,7 @@
       <td>-7850</td>
       <td>Fridberg</td>
       <td>-750</td>
+      <td>76</td>
     </tr>
     <tr>
       <th>3</th>
@@ -330,6 +321,7 @@
       <td>-7525</td>
       <td>Fridberg</td>
       <td>-525</td>
+      <td>76</td>
     </tr>
     <tr>
       <th>4</th>
@@ -338,10 +330,428 @@
       <td>-6350</td>
       <td>Fridberg</td>
       <td>100</td>
+      <td>76</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<p>So for my clustering analysis of the whole study I would like to see if the studies as a whole have interesting cluster patterns. To do this step I will have to map an integer value to the study so that clustering can take place.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_predicted</span> <span class="o">=</span> <span class="n">cluster</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
+<span class="n">clustering</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_predicted</span>
+<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Total W</th>
+      <th>Total L</th>
+      <th>Study</th>
+      <th>Margin</th>
+      <th>count_zeros</th>
+      <th>cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Subj_1</td>
+      <td>5800</td>
+      <td>-4650</td>
+      <td>Fridberg</td>
+      <td>1150</td>
+      <td>80</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Subj_2</td>
+      <td>7250</td>
+      <td>-7925</td>
+      <td>Fridberg</td>
+      <td>-675</td>
+      <td>71</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Subj_3</td>
+      <td>7100</td>
+      <td>-7850</td>
+      <td>Fridberg</td>
+      <td>-750</td>
+      <td>76</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Subj_4</td>
+      <td>7000</td>
+      <td>-7525</td>
+      <td>Fridberg</td>
+      <td>-525</td>
+      <td>76</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Subj_5</td>
+      <td>6450</td>
+      <td>-6350</td>
+      <td>Fridberg</td>
+      <td>100</td>
+      <td>76</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df2</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df3</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df4</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Margin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2874a2694f0&gt;
+</pre></div>
+</div>
+<img alt="_images/Whole_clustering_5_2.png" src="_images/Whole_clustering_5_2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">minmax_scale</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]])</span>
+<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Total W</th>
+      <th>Total L</th>
+      <th>Study</th>
+      <th>Margin</th>
+      <th>count_zeros</th>
+      <th>cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Subj_1</td>
+      <td>5800</td>
+      <td>-4650</td>
+      <td>Fridberg</td>
+      <td>0.675000</td>
+      <td>0.404494</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Subj_2</td>
+      <td>7250</td>
+      <td>-7925</td>
+      <td>Fridberg</td>
+      <td>0.446875</td>
+      <td>0.303371</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Subj_3</td>
+      <td>7100</td>
+      <td>-7850</td>
+      <td>Fridberg</td>
+      <td>0.437500</td>
+      <td>0.359551</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Subj_4</td>
+      <td>7000</td>
+      <td>-7525</td>
+      <td>Fridberg</td>
+      <td>0.465625</td>
+      <td>0.359551</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Subj_5</td>
+      <td>6450</td>
+      <td>-6350</td>
+      <td>Fridberg</td>
+      <td>0.543750</td>
+      <td>0.359551</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_predicted</span>
+<span class="n">clustering</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Total W</th>
+      <th>Total L</th>
+      <th>Study</th>
+      <th>Margin</th>
+      <th>count_zeros</th>
+      <th>cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Subj_1</td>
+      <td>5800</td>
+      <td>-4650</td>
+      <td>Fridberg</td>
+      <td>0.675000</td>
+      <td>0.404494</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Subj_2</td>
+      <td>7250</td>
+      <td>-7925</td>
+      <td>Fridberg</td>
+      <td>0.446875</td>
+      <td>0.303371</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Subj_3</td>
+      <td>7100</td>
+      <td>-7850</td>
+      <td>Fridberg</td>
+      <td>0.437500</td>
+      <td>0.359551</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Subj_4</td>
+      <td>7000</td>
+      <td>-7525</td>
+      <td>Fridberg</td>
+      <td>0.465625</td>
+      <td>0.359551</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Subj_5</td>
+      <td>6450</td>
+      <td>-6350</td>
+      <td>Fridberg</td>
+      <td>0.543750</td>
+      <td>0.359551</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.69183361, 0.31542525],
+       [0.31934307, 0.33429017],
+       [0.50055668, 0.34221899],
+       [0.53452744, 0.79761579]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">clustering</span><span class="p">[</span><span class="n">clustering</span><span class="o">.</span><span class="n">cluster</span><span class="o">==</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df1</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df2</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df3</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df3</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df4</span><span class="o">.</span><span class="n">Margin</span><span class="p">,</span> <span class="n">df4</span><span class="o">.</span><span class="n">count_zeros</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">km</span><span class="o">.</span><span class="n">cluster_centers_</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;centroid&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Margin&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2874a378970&gt;
+</pre></div>
+</div>
+<img alt="_images/Whole_clustering_10_1.png" src="_images/Whole_clustering_10_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_rng</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">sse</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">k_rng</span><span class="p">:</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
+    <span class="n">sse</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">km</span><span class="o">.</span><span class="n">inertia_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\User\anaconda3\lib\site-packages\sklearn\cluster\_kmeans.py:881: UserWarning: KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=3.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sse</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[34.96757367230577,
+ 19.517832061877886,
+ 11.632313671787802,
+ 9.484201338109294,
+ 7.899476917621609,
+ 6.360525635014802,
+ 5.568247840139838,
+ 4.944597331027517,
+ 4.377219325330844]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;K&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sum of squared error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">k_rng</span><span class="p">,</span> <span class="n">sse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2874a434250&gt;]
+</pre></div>
+</div>
+<img alt="_images/Whole_clustering_13_1.png" src="_images/Whole_clustering_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clustering</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Study&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2874ac0d8e0&gt;
+</pre></div>
+</div>
+<img alt="_images/Whole_clustering_14_1.png" src="_images/Whole_clustering_14_1.png" />
+</div>
 </div>
 </div>
 

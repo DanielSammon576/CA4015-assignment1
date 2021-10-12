@@ -136,10 +136,11 @@ plt.plot(k_rng, sse)
 #This is indictaing that the optimum number of clusters is 4 but 3 is also a reasonable choice
 
 
-# In[13]:
+# In[14]:
 
 
 sns.scatterplot(data=clustering, x="Difference", y="Total-B/D", hue="AgeProfile")
+plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
 
 
 # In[ ]:

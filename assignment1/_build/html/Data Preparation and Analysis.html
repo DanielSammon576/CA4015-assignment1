@@ -244,7 +244,7 @@
 <p>The data set at hand is divided into three different trials 95-trial, 100-trial and a 150-trial. There is three seperate csv files per trial. Let’s take the 95-trial we have a csv file that records the participants choices, a csv file that records the participants losses and a csv file that records the participants winnings.</p>
 <p>As all of the data isn’t gathered from one study it is in fact gathered from 10 seperate studies we are also given a fourth csv file which maps what study each participant took part in.</p>
 <p>The studies differ in many ways from the size of the actual trials to the age demographics of the studies.</p>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -266,20 +266,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_2304</span><span class="o">/</span><span class="mf">2784781905.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -296,6 +282,23 @@
 <span class="n">win150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Data\wi_150.csv&#39;</span><span class="p">)</span>
 <span class="n">loss150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\lo_150.csv&quot;</span><span class="p">)</span>
 <span class="n">index150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Data\index_150.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zeros95</span> <span class="o">=</span> <span class="n">loss95</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">zeros95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zeros95</span><span class="p">)</span>
+<span class="n">zeros95</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span>
+
+<span class="n">zeros100</span> <span class="o">=</span> <span class="n">loss100</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">zeros100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zeros100</span><span class="p">)</span>
+<span class="n">zeros100</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span>
+
+<span class="n">zeros150</span> <span class="o">=</span> <span class="n">loss150</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">zeros150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">zeros150</span><span class="p">)</span>
+<span class="n">zeros150</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -327,6 +330,10 @@
 <span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Margin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span>
 <span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Margin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span>
 
+<span class="n">df95</span><span class="p">[</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zeros95</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df100</span><span class="p">[</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zeros100</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df150</span><span class="p">[</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zeros150</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
 <span class="n">df95</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="n">df100</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="n">df150</span><span class="o">.</span><span class="n">size</span> <span class="c1">#2468</span>
 
 <span class="n">final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -334,7 +341,6 @@
 <span class="n">alternative</span> <span class="o">=</span> <span class="n">df95</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df100</span><span class="p">)</span>
 <span class="n">final</span> <span class="o">=</span> <span class="n">alternative</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df150</span><span class="p">)</span>
 <span class="n">final</span><span class="o">.</span><span class="n">size</span> <span class="c1">#2468</span>
-<span class="c1">#final.to_csv(&quot;Data/whole_clustering.csv&quot;)</span>
 <span class="n">final</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -363,6 +369,7 @@
       <th>Total L</th>
       <th>Study</th>
       <th>Margin</th>
+      <th>count_zeros</th>
     </tr>
   </thead>
   <tbody>
@@ -373,6 +380,7 @@
       <td>-4650</td>
       <td>Fridberg</td>
       <td>1150</td>
+      <td>80</td>
     </tr>
     <tr>
       <th>1</th>
@@ -381,6 +389,7 @@
       <td>-7925</td>
       <td>Fridberg</td>
       <td>-675</td>
+      <td>71</td>
     </tr>
     <tr>
       <th>2</th>
@@ -389,6 +398,7 @@
       <td>-7850</td>
       <td>Fridberg</td>
       <td>-750</td>
+      <td>76</td>
     </tr>
     <tr>
       <th>3</th>
@@ -397,6 +407,7 @@
       <td>-7525</td>
       <td>Fridberg</td>
       <td>-525</td>
+      <td>76</td>
     </tr>
     <tr>
       <th>4</th>
@@ -405,6 +416,7 @@
       <td>-6350</td>
       <td>Fridberg</td>
       <td>100</td>
+      <td>76</td>
     </tr>
   </tbody>
 </table>
@@ -418,10 +430,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x224e5d05e20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1fe5bf251c0&gt;
 </pre></div>
 </div>
-<img alt="_images/Data Preparation and Analysis_10_1.png" src="_images/Data Preparation and Analysis_10_1.png" />
+<img alt="_images/Data Preparation and Analysis_11_1.png" src="_images/Data Preparation and Analysis_11_1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -449,7 +461,7 @@
   Text(9, 0, &#39;Wetzels&#39;)])
 </pre></div>
 </div>
-<img alt="_images/Data Preparation and Analysis_11_2.png" src="_images/Data Preparation and Analysis_11_2.png" />
+<img alt="_images/Data Preparation and Analysis_12_2.png" src="_images/Data Preparation and Analysis_12_2.png" />
 </div>
 </div>
 <p>From my above data analysis I can see that one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.</p>

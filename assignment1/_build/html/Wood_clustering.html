@@ -223,7 +223,7 @@
                 
   <div class="section" id="wood-study-clustering">
 <h1><strong>Wood study clustering</strong><a class="headerlink" href="#wood-study-clustering" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
+<div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -244,20 +244,6 @@
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_8608</span><span class="o">/</span><span class="mf">896990326.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
 </pre></div>
 </div>
 </div>
@@ -386,7 +372,7 @@
       <td>56.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -395,7 +381,7 @@
       <td>63.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
@@ -404,7 +390,7 @@
       <td>59.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -413,7 +399,7 @@
       <td>54.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
@@ -422,7 +408,7 @@
       <td>65.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -450,7 +436,7 @@
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15199be4f40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1ebe94dce50&gt;
 </pre></div>
 </div>
 <img alt="_images/Wood_clustering_4_2.png" src="_images/Wood_clustering_4_2.png" />
@@ -498,7 +484,7 @@
       <td>0.525424</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -507,7 +493,7 @@
       <td>0.644068</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
@@ -516,7 +502,7 @@
       <td>0.576271</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>3</th>
@@ -525,7 +511,7 @@
       <td>0.491525</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
@@ -534,7 +520,7 @@
       <td>0.677966</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -590,7 +576,7 @@
       <td>0.525424</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -599,7 +585,7 @@
       <td>0.644068</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
@@ -608,7 +594,7 @@
       <td>0.576271</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
@@ -617,7 +603,7 @@
       <td>0.491525</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
@@ -639,9 +625,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.84861111, 0.1970339 ],
-       [0.68542543, 0.74713697],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.68542543, 0.74713697],
        [0.48381847, 0.48627357],
+       [0.84861111, 0.1970339 ],
        [0.32816817, 0.74530463]])
 </pre></div>
 </div>
@@ -668,7 +654,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x15199d0c220&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1ebe95fc070&gt;
 </pre></div>
 </div>
 <img alt="_images/Wood_clustering_9_1.png" src="_images/Wood_clustering_9_1.png" />
@@ -701,13 +687,13 @@
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10.51271497908734,
  7.002477933644922,
- 4.788279566527742,
- 3.3892316916603384,
- 2.741761421875255,
- 2.1955361147494585,
- 1.8606315492565484,
- 1.5517777863144369,
- 1.39982352525174]
+ 4.792439965393865,
+ 3.389203444262832,
+ 2.715272036657807,
+ 2.2005444272307195,
+ 1.8773169847586275,
+ 1.5541505843165464,
+ 1.3673663500349262]
 </pre></div>
 </div>
 </div>
@@ -722,7 +708,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x15199dbda60&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1ebe96ae970&gt;]
 </pre></div>
 </div>
 <img alt="_images/Wood_clustering_12_1.png" src="_images/Wood_clustering_12_1.png" />
@@ -731,11 +717,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">clustering</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;AgeProfile&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;Difference&#39;, ylabel=&#39;Total-B/D&#39;&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1ebe9b215e0&gt;
 </pre></div>
 </div>
 <img alt="_images/Wood_clustering_13_1.png" src="_images/Wood_clustering_13_1.png" />
