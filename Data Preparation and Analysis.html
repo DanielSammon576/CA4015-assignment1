@@ -1,0 +1,721 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Preparation and Analysis &#8212; Iowa Gambling Task</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Whole Dataset Clustering" href="Whole_clustering.html" />
+    <link rel="prev" title="Iowa Gambling Task" href="Introduction.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/IOWA.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Iowa Gambling Task</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Introduction.html">
+   Iowa Gambling Task
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Preparation and Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Whole_clustering.html">
+   Whole Dataset Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Wood_clustering.html">
+   Wood Study Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Conclusion.html">
+   Conclusion
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Data Preparation and Analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FData Preparation and Analysis.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Data Preparation and Analysis.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-to-data">
+   Introduction to Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-visualisation">
+   Data visualisation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations-and-wood-study-visualisations">
+   Observations and wood study visualisations
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="data-preparation-and-analysis">
+<h1>Data Preparation and Analysis<a class="headerlink" href="#data-preparation-and-analysis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction-to-data">
+<h2>Introduction to Data<a class="headerlink" href="#introduction-to-data" title="Permalink to this headline">¶</a></h2>
+<p>The data set at hand is divided into three different trials 95-trial, 100-trial and a 150-trial. There is three seperate csv files per trial. Let’s take the 95-trial - we have a csv file that records the participants choices, a csv file that records the participants losses and a csv file that records the participants winnings.</p>
+<p>As all of the data is not gathered from one study but is in fact gathered from 10 seperate studies, to handle this we are given a fourth csv file which maps what study each participant took part in.</p>
+<p>The studies differ in many ways from the size of the actual trials to the age demographics of the studies.</p>
+<p><strong>Libraries used</strong></p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span>
+
+<span class="kn">import</span> <span class="nn">sklearn</span>
+<span class="kn">from</span> <span class="nn">sklearn.cluster</span> <span class="kn">import</span> <span class="n">KMeans</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+
+<span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">datasets</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df95</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df100</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df150</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="n">df95</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win95</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df95</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss95</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win100</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss100</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win150</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loss150</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df95</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df100</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df150</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">df95</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index95</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index100</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index150</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">df95</span><span class="p">[</span><span class="s2">&quot;Margin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df95</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df95</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span>
+<span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Margin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df100</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span>
+<span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Margin&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Total W&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df150</span><span class="p">[</span><span class="s2">&quot;Total L&quot;</span><span class="p">]</span>
+
+<span class="n">df95</span><span class="p">[</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zeros95</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df100</span><span class="p">[</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zeros100</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">df150</span><span class="p">[</span><span class="s2">&quot;count_zeros&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zeros150</span><span class="p">[</span><span class="s2">&quot;zeros&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">df95</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="n">df100</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="n">df150</span><span class="o">.</span><span class="n">size</span> <span class="c1">#2468</span>
+
+<span class="n">final</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">alternative</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">alternative</span> <span class="o">=</span> <span class="n">df95</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df100</span><span class="p">)</span>
+<span class="n">final</span> <span class="o">=</span> <span class="n">alternative</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df150</span><span class="p">)</span>
+<span class="n">final</span><span class="o">.</span><span class="n">size</span> <span class="c1">#2468</span>
+<span class="n">final</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>Total W</th>
+      <th>Total L</th>
+      <th>Study</th>
+      <th>Margin</th>
+      <th>count_zeros</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Subj_1</td>
+      <td>5800</td>
+      <td>-4650</td>
+      <td>Fridberg</td>
+      <td>1150</td>
+      <td>80</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Subj_2</td>
+      <td>7250</td>
+      <td>-7925</td>
+      <td>Fridberg</td>
+      <td>-675</td>
+      <td>71</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Subj_3</td>
+      <td>7100</td>
+      <td>-7850</td>
+      <td>Fridberg</td>
+      <td>-750</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Subj_4</td>
+      <td>7000</td>
+      <td>-7525</td>
+      <td>Fridberg</td>
+      <td>-525</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Subj_5</td>
+      <td>6450</td>
+      <td>-6350</td>
+      <td>Fridberg</td>
+      <td>100</td>
+      <td>76</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="data-visualisation">
+<h2>Data visualisation<a class="headerlink" href="#data-visualisation" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">final</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Total W&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Total L&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;Study&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x228bf7359a0&gt;
+</pre></div>
+</div>
+<img alt="_images/Data Preparation and Analysis_12_1.png" src="_images/Data Preparation and Analysis_12_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Study&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">final</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No handles with labels found to put in legend.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
+ [Text(0, 0, &#39;Fridberg&#39;),
+  Text(1, 0, &#39;Horstmann&#39;),
+  Text(2, 0, &#39;Kjome&#39;),
+  Text(3, 0, &#39;Maia&#39;),
+  Text(4, 0, &#39;SteingroverInPrep&#39;),
+  Text(5, 0, &#39;Premkumar&#39;),
+  Text(6, 0, &#39;Wood&#39;),
+  Text(7, 0, &#39;Worthy&#39;),
+  Text(8, 0, &#39;Steingroever2011&#39;),
+  Text(9, 0, &#39;Wetzels&#39;)])
+</pre></div>
+</div>
+<img alt="_images/Data Preparation and Analysis_13_2.png" src="_images/Data Preparation and Analysis_13_2.png" />
+</div>
+</div>
+<p>With the scatter matrix plot below I hope the relationships between the different variables will provide me with some interesting insights.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">final</span><span class="p">[[</span><span class="s2">&quot;Total W&quot;</span><span class="p">,</span> <span class="s2">&quot;Total L&quot;</span><span class="p">,</span> <span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">12.5</span><span class="p">,</span><span class="mf">12.5</span><span class="p">),</span> <span class="n">hist_kwds</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Preparation and Analysis_15_0.png" src="_images/Data Preparation and Analysis_15_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="observations-and-wood-study-visualisations">
+<h2>Observations and wood study visualisations<a class="headerlink" href="#observations-and-wood-study-visualisations" title="Permalink to this headline">¶</a></h2>
+<p>From my above data analysis I can see one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>The subject dataframe I will use to cluster only the Wood study. This study was ran on two seperate groups with different ages so will hopefully provide interesting results.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subject</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Subjects&quot;</span><span class="p">])</span>
+<span class="n">subject</span><span class="p">[</span><span class="s2">&quot;Subjects&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win100</span><span class="o">.</span><span class="n">index</span>
+<span class="n">subject</span><span class="p">[</span><span class="s2">&quot;Difference&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">win100</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="n">loss100</span><span class="p">[</span><span class="s2">&quot;Total&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">subject</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">choice_new</span><span class="p">[</span><span class="s2">&quot;Total-B/D&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="mi">100</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">subject</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">index100</span><span class="p">[</span><span class="s2">&quot;Study&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">subject</span> <span class="o">=</span> <span class="n">subject</span><span class="p">[</span><span class="n">subject</span><span class="o">.</span><span class="n">Study</span> <span class="o">==</span> <span class="s2">&quot;Wood&quot;</span><span class="p">]</span>
+<span class="n">subject</span><span class="p">[</span><span class="s2">&quot;AgeProfile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">AgeProfile</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">91</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Young&quot;</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">AgeProfile</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">91</span><span class="p">:]</span> <span class="o">=</span> <span class="s2">&quot;Old&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Subject dataframe&quot;</span><span class="p">)</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Subject dataframe
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Subjects</th>
+      <th>Difference</th>
+      <th>Total-B/D</th>
+      <th>Study</th>
+      <th>AgeProfile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>316</th>
+      <td>Subj_317</td>
+      <td>-320</td>
+      <td>56.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>317</th>
+      <td>Subj_318</td>
+      <td>-1030</td>
+      <td>63.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>318</th>
+      <td>Subj_319</td>
+      <td>-1850</td>
+      <td>59.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>319</th>
+      <td>Subj_320</td>
+      <td>-775</td>
+      <td>54.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>320</th>
+      <td>Subj_321</td>
+      <td>-1600</td>
+      <td>65.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>321</th>
+      <td>Subj_322</td>
+      <td>-550</td>
+      <td>52.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>322</th>
+      <td>Subj_323</td>
+      <td>-2210</td>
+      <td>63.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>323</th>
+      <td>Subj_324</td>
+      <td>-450</td>
+      <td>53.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>324</th>
+      <td>Subj_325</td>
+      <td>590</td>
+      <td>60.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+    <tr>
+      <th>325</th>
+      <td>Subj_326</td>
+      <td>-380</td>
+      <td>66.0</td>
+      <td>Wood</td>
+      <td>Young</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Subjects&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;AgeProfile&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span>
+<span class="n">x_axis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-14-0bcb2aab0190&gt;:3: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax1 = plt.axes()
+</pre></div>
+</div>
+<img alt="_images/Data Preparation and Analysis_26_1.png" src="_images/Data Preparation and Analysis_26_1.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">subject</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="s2">&quot;Total-B/D&quot;</span><span class="p">]],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">12.5</span><span class="p">,</span><span class="mf">12.5</span><span class="p">),</span> <span class="n">hist_kwds</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Preparation and Analysis_27_0.png" src="_images/Data Preparation and Analysis_27_0.png" />
+</div>
+</div>
+<p>The dataset had a larger representation of younger people, using the dataframe above I will inspect the difference between younger and older both in profit margins and how quick the two age groups were to realise that some cards are more benficial then others. I use different analysis techniques including scatter graphs and k-means clustering to evaluate this hypothesis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#This is the dataset that we will be using for our clustering of the wood study</span>
+<span class="n">subject</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Data/clustering.csv&quot;</span><span class="p">)</span>
+
+<span class="c1">#This is the dataset we will be using for the whole study clustering</span>
+<span class="n">final</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;Data/whole_clustering.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="Introduction.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Iowa Gambling Task</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="Whole_clustering.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Whole Dataset Clustering</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Daniel Sammon<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
