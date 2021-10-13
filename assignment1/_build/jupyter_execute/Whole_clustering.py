@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # **Whole dataset clustering**
+# # Whole Dataset Clustering
 
-# ### **Data preperation and clustering**
+# ### Data preperation and clustering
 
 # In[1]:
 
@@ -67,7 +67,7 @@ plt.xlabel("Margin")
 plt.ylabel("count_zeros")
 
 
-# ### **Normalization and refined clustering**
+# ### Normalization and refined clustering
 
 # Below we can see the dataframe after normalization has taken place.
 
@@ -109,7 +109,7 @@ plt.ylabel("count_zeros")
 plt.legend()
 
 
-# ### **Further analysis**
+# ### Further analysis
 
 # In[8]:
 

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # **Data Preparation and Analysis**
+# # Data Preparation and Analysis
 
 # 
 
-# ### **Introduction to Data**
+# ### Introduction to Data
 
 # The data set at hand is divided into three different trials 95-trial, 100-trial and a 150-trial. There is three seperate csv files per trial. Let's take the 95-trial we have a csv file that records the participants choices, a csv file that records the participants losses and a csv file that records the participants winnings.
 
@@ -113,7 +113,7 @@ final.size #2468
 final.head()
 
 
-# ### **Data visualisation**
+# ### Data visualisation
 
 # In[5]:
 
@@ -130,7 +130,7 @@ plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.xticks(rotation=45)
 
 
-# ### **Observations**
+# ### Observations
 
 # From my above data analysis I can see that one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Whole dataset clustering &#8212; Iowa Gambling Task</title>
+    <title>Whole Dataset Clustering &#8212; Iowa Gambling Task</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Wood study clustering" href="Wood_clustering.html" />
+    <link rel="next" title="Wood Study Clustering" href="Wood_clustering.html" />
     <link rel="prev" title="Data Preparation and Analysis" href="Data%20Preparation%20and%20Analysis.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -96,30 +96,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Data%20Preparation%20and%20Analysis.html">
-   <strong>
-    Data Preparation and Analysis
-   </strong>
+   Data Preparation and Analysis
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   <strong>
-    Whole dataset clustering
-   </strong>
+   Whole Dataset Clustering
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Wood_clustering.html">
-   <strong>
-    Wood study clustering
-   </strong>
+   Wood Study Clustering
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Conclusion.html">
-   <strong>
-    Conclusion
-   </strong>
+   Conclusion
   </a>
  </li>
 </ul>
@@ -228,23 +220,17 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-preperation-and-clustering">
-   <strong>
-    Data preperation and clustering
-   </strong>
+   Data preperation and clustering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#normalization-and-refined-clustering">
-   <strong>
-    Normalization and refined clustering
-   </strong>
+   Normalization and refined clustering
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#further-analysis">
-   <strong>
-    Further analysis
-   </strong>
+   Further analysis
   </a>
  </li>
 </ul>
@@ -259,9 +245,9 @@
               <div>
                 
   <div class="section" id="whole-dataset-clustering">
-<h1><strong>Whole dataset clustering</strong><a class="headerlink" href="#whole-dataset-clustering" title="Permalink to this headline">¶</a></h1>
+<h1>Whole Dataset Clustering<a class="headerlink" href="#whole-dataset-clustering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-preperation-and-clustering">
-<h2><strong>Data preperation and clustering</strong><a class="headerlink" href="#data-preperation-and-clustering" title="Permalink to this headline">¶</a></h2>
+<h2>Data preperation and clustering<a class="headerlink" href="#data-preperation-and-clustering" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -328,7 +314,7 @@
       <td>Fridberg</td>
       <td>1150</td>
       <td>80</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -338,7 +324,7 @@
       <td>Fridberg</td>
       <td>-675</td>
       <td>71</td>
-      <td>3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>2</th>
@@ -348,7 +334,7 @@
       <td>Fridberg</td>
       <td>-750</td>
       <td>76</td>
-      <td>3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>3</th>
@@ -358,7 +344,7 @@
       <td>Fridberg</td>
       <td>-525</td>
       <td>76</td>
-      <td>3</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>4</th>
@@ -368,7 +354,7 @@
       <td>Fridberg</td>
       <td>100</td>
       <td>76</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
   </tbody>
 </table>
@@ -401,7 +387,7 @@
 </div>
 </div>
 <div class="section" id="normalization-and-refined-clustering">
-<h2><strong>Normalization and refined clustering</strong><a class="headerlink" href="#normalization-and-refined-clustering" title="Permalink to this headline">¶</a></h2>
+<h2>Normalization and refined clustering<a class="headerlink" href="#normalization-and-refined-clustering" title="Permalink to this headline">¶</a></h2>
 <p>Below we can see the dataframe after normalization has taken place.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
@@ -450,7 +436,7 @@
       <td>Fridberg</td>
       <td>0.675000</td>
       <td>0.404494</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -460,7 +446,7 @@
       <td>Fridberg</td>
       <td>0.446875</td>
       <td>0.303371</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
@@ -470,7 +456,7 @@
       <td>Fridberg</td>
       <td>0.437500</td>
       <td>0.359551</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>3</th>
@@ -480,7 +466,7 @@
       <td>Fridberg</td>
       <td>0.465625</td>
       <td>0.359551</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>4</th>
@@ -490,7 +476,7 @@
       <td>Fridberg</td>
       <td>0.543750</td>
       <td>0.359551</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
   </tbody>
 </table>
@@ -503,10 +489,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.69127056, 0.31601124],
-       [0.50012703, 0.34196584],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.31934307, 0.33429017],
+       [0.69183361, 0.31542525],
        [0.53452744, 0.79761579],
-       [0.31934307, 0.33429017]])
+       [0.50055668, 0.34221899]])
 </pre></div>
 </div>
 </div>
@@ -533,7 +519,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1f677d47790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25b8109ef40&gt;
 </pre></div>
 </div>
 <img alt="_images/Whole_clustering_13_1.png" src="_images/Whole_clustering_13_1.png" />
@@ -541,7 +527,7 @@
 </div>
 </div>
 <div class="section" id="further-analysis">
-<h2><strong>Further analysis</strong><a class="headerlink" href="#further-analysis" title="Permalink to this headline">¶</a></h2>
+<h2>Further analysis<a class="headerlink" href="#further-analysis" title="Permalink to this headline">¶</a></h2>
 <div class="cell tag_remove-output tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_rng</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
@@ -564,7 +550,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1f6782b02e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x25b8115ea90&gt;]
 </pre></div>
 </div>
 <img alt="_images/Whole_clustering_17_1.png" src="_images/Whole_clustering_17_1.png" />
@@ -579,7 +565,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1f6782e49d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25b8162cdc0&gt;
 </pre></div>
 </div>
 <img alt="_images/Whole_clustering_19_1.png" src="_images/Whole_clustering_19_1.png" />
@@ -622,7 +608,7 @@
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><strong>Data Preparation and Analysis</strong></p>
+                <p class="prevnext-title">Data Preparation and Analysis</p>
             </div>
         </a>
     </div>
@@ -630,7 +616,7 @@
         <a class="right-next" href="Wood_clustering.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><strong>Wood study clustering</strong></p>
+                <p class="prevnext-title">Wood Study Clustering</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

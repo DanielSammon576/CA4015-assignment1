@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # **Wood study clustering**
+# # Wood Study Clustering
 
-# ### **Data preperation and initial clustering**
+# ### Data preperation and initial clustering
 
 # In[1]:
 
@@ -62,7 +62,7 @@ plt.xlabel("Difference")
 plt.ylabel("Total-B/D")
 
 
-# ### **Normalization and refined clustering**
+# ### Normalization and refined clustering
 
 # In[4]:
 
@@ -114,7 +114,7 @@ plt.ylabel("Total-B/D")
 plt.legend()
 
 
-# ### **Further analysis**
+# ### Further analysis
 
 # In[9]:
 
