@@ -1,6 +1,6 @@
 # Jupyter Book
 
-Link to jupyter book can be found [here](file:///C:/daniel/ca4015/assignment1/_build/html/Introduction.html)
+Link to jupyter book can be found [here](https://danielsammon576.github.io/CA4015/intro.html)
 
 # Github
 
