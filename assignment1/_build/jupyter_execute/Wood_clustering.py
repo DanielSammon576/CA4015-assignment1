@@ -3,6 +3,8 @@
 
 # # **Wood study clustering**
 
+# ### **Data preperation and initial clustering**
+
 # In[1]:
 
 
@@ -43,7 +45,7 @@ clustering.head()
 
 # Here we have the inital clustering based on the profit/loss difference and the percentage of beneficial cards picked. As you can see there are a lot of outliers in the data, the four clusters are very distinct and clear. An interesting oberservation is that the majority of the subjects that picked B/D gained the most money but on the other hand they also lost the most money.
 
-# In[16]:
+# In[3]:
 
 
 df1 = clustering[clustering.cluster==0]
@@ -59,6 +61,8 @@ plt.scatter(df4.Difference, df4["Total-B/D"], color='brown')
 plt.xlabel("Difference")
 plt.ylabel("Total-B/D")
 
+
+# ### **Normalization and refined clustering**
 
 # In[4]:
 
@@ -90,7 +94,7 @@ km.cluster_centers_
 
 # Now we have our revised cluster, with centroids added for extra insight. This cluster makes our previous doubts a little clearer. The subjects that rarely chose B/D lost the greatest money as shown below. Also although the B/D cards were clearly the most beneficial cards they too had a chance of a major loss, which can be seen from the particpants in the top left of our below cluster.
 
-# In[15]:
+# In[8]:
 
 
 df1 = clustering[clustering.cluster==0]
@@ -109,6 +113,8 @@ plt.xlabel("Difference")
 plt.ylabel("Total-B/D")
 plt.legend()
 
+
+# ### **Further analysis**
 
 # In[9]:
 

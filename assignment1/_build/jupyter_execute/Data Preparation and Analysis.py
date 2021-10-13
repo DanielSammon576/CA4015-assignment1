@@ -113,6 +113,8 @@ final.size #2468
 final.head()
 
 
+# ### **Data visualisation**
+
 # In[5]:
 
 
@@ -127,6 +129,8 @@ sns.barplot(x="Study", y="Margin", data=final)
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 plt.xticks(rotation=45)
 
+
+# ### **Observations**
 
 # From my above data analysis I can see that one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.
 
@@ -189,7 +193,7 @@ loss100['Total'] = loss100.sum(axis=1)
 
 # The subject dataframe I will use to cluster only the Wood study. This study was ran on two seperate groups with different ages so will hopefully provide interesting results.
 
-# In[15]:
+# In[12]:
 
 
 subject = pd.DataFrame(columns=["Subjects"])

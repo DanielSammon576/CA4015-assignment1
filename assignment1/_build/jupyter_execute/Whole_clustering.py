@@ -3,6 +3,8 @@
 
 # # **Whole dataset clustering**
 
+# ### **Data preperation and clustering**
+
 # In[1]:
 
 
@@ -65,6 +67,8 @@ plt.xlabel("Margin")
 plt.ylabel("count_zeros")
 
 
+# ### **Normalization and refined clustering**
+
 # Below we can see the dataframe after normalization has taken place.
 
 # In[5]:
@@ -104,6 +108,8 @@ plt.xlabel("Margin")
 plt.ylabel("count_zeros")
 plt.legend()
 
+
+# ### **Further analysis**
 
 # In[8]:
 
