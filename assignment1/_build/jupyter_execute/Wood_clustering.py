@@ -5,6 +5,8 @@
 
 # ### Data preperation and initial clustering
 
+# **Libararies used**
+
 # In[1]:
 
 
@@ -138,17 +140,24 @@ plt.plot(k_rng, sse)
 #This is indictaing that the optimum number of clusters is 4 but 3 is also a reasonable choice
 
 
-# Lastly I wanted to briefly touch on the performance of the different ages. The scatterplot below shows us that the older participants were the bigger lossers but also the biggest gainers. Some of the older participants were blind to the pattern of the B/D cards where others were very quick to realise the two cards that were benfitting them. The younger group were in general more near the mean of the total study.
+# Again the clusters aren't overlapping and are showing relatively good dense clusters. Unfortuantely the scores aren't nearer to 1 which is ideal.
 
 # In[11]:
 
 
+from sklearn.metrics import silhouette_score
+for n in range(2, 9):
+    km = KMeans(n_clusters=n)
+    km.fit_predict(clustering[["Difference", "Total-B/D"]])
+    value = silhouette_score(clustering[["Difference", "Total-B/D"]], km.labels_, metric='euclidean')
+    print(' Silhouette Score: %.3f' % value)
+
+
+# Lastly I wanted to briefly touch on the performance of the different ages. The scatterplot below shows us that the older participants were the bigger lossers but also the biggest gainers. Some of the older participants were blind to the pattern of the B/D cards where others were very quick to realise the two cards that were benfitting them. The younger group were in general more near the mean of the total study.
+
+# In[12]:
+
+
 sns.scatterplot(data=clustering, x="Difference", y="Total-B/D", hue="AgeProfile")
 plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
-
-
-# In[ ]:
-
-
-
 

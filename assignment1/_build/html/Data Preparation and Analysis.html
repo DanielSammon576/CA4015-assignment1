@@ -229,8 +229,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#observations">
-   Observations
+  <a class="reference internal nav-link" href="#observations-and-wood-study-visualisations">
+   Observations and wood study visualisations
   </a>
  </li>
 </ul>
@@ -248,9 +248,10 @@
 <h1>Data Preparation and Analysis<a class="headerlink" href="#data-preparation-and-analysis" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction-to-data">
 <h2>Introduction to Data<a class="headerlink" href="#introduction-to-data" title="Permalink to this headline">¶</a></h2>
-<p>The data set at hand is divided into three different trials 95-trial, 100-trial and a 150-trial. There is three seperate csv files per trial. Let’s take the 95-trial we have a csv file that records the participants choices, a csv file that records the participants losses and a csv file that records the participants winnings.</p>
-<p>As all of the data isn’t gathered from one study it is in fact gathered from 10 seperate studies we are also given a fourth csv file which maps what study each participant took part in.</p>
+<p>The data set at hand is divided into three different trials 95-trial, 100-trial and a 150-trial. There is three seperate csv files per trial. Let’s take the 95-trial - we have a csv file that records the participants choices, a csv file that records the participants losses and a csv file that records the participants winnings.</p>
+<p>As all of the data is not gathered from one study but is in fact gathered from 10 seperate studies, to handle this we are given a fourth csv file which maps what study each participant took part in.</p>
 <p>The studies differ in many ways from the size of the actual trials to the age demographics of the studies.</p>
+<p><strong>Libraries used</strong></p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -408,7 +409,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1244f903f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x228bf7359a0&gt;
 </pre></div>
 </div>
 <img alt="_images/Data Preparation and Analysis_12_1.png" src="_images/Data Preparation and Analysis_12_1.png" />
@@ -442,10 +443,22 @@
 <img alt="_images/Data Preparation and Analysis_13_2.png" src="_images/Data Preparation and Analysis_13_2.png" />
 </div>
 </div>
+<p>With the scatter matrix plot below I hope the relationships between the different variables will provide me with some interesting insights.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">final</span><span class="p">[[</span><span class="s2">&quot;Total W&quot;</span><span class="p">,</span> <span class="s2">&quot;Total L&quot;</span><span class="p">,</span> <span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">12.5</span><span class="p">,</span><span class="mf">12.5</span><span class="p">),</span> <span class="n">hist_kwds</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 </div>
-<div class="section" id="observations">
-<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
-<p>From my above data analysis I can see that one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.</p>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Preparation and Analysis_15_0.png" src="_images/Data Preparation and Analysis_15_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="observations-and-wood-study-visualisations">
+<h2>Observations and wood study visualisations<a class="headerlink" href="#observations-and-wood-study-visualisations" title="Permalink to this headline">¶</a></h2>
+<p>From my above data analysis I can see one study in particular whose margins were surprising. The Wood study in both graphs shows that participants were making considerable losses. Upon inspection this study was ran on two different groups of people. The first 90 participants were between the ages of 18-40 with the remaining 62 participants between the ages of 61-88. My proposal is to look at the difference between the two age groups and see whether the younger participants were quicker to identify the beneficial cards.</p>
 <div class="cell tag_remove-input docutils container">
 </div>
 <div class="cell tag_remove-input docutils container">
@@ -586,6 +599,37 @@
   </tbody>
 </table>
 </div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;Subjects&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">subject</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;AgeProfile&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.02</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">()</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span>
+<span class="n">x_axis</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-14-0bcb2aab0190&gt;:3: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+  ax1 = plt.axes()
+</pre></div>
+</div>
+<img alt="_images/Data Preparation and Analysis_26_1.png" src="_images/Data Preparation and Analysis_26_1.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">plotting</span><span class="o">.</span><span class="n">scatter_matrix</span><span class="p">(</span><span class="n">subject</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="s2">&quot;Total-B/D&quot;</span><span class="p">]],</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">12.5</span><span class="p">,</span><span class="mf">12.5</span><span class="p">),</span> <span class="n">hist_kwds</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">35</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Data Preparation and Analysis_27_0.png" src="_images/Data Preparation and Analysis_27_0.png" />
+</div>
 </div>
 <p>The dataset had a larger representation of younger people, using the dataframe above I will inspect the difference between younger and older both in profit margins and how quick the two age groups were to realise that some cards are more benficial then others. I use different analysis techniques including scatter graphs and k-means clustering to evaluate this hypothesis.</p>
 <div class="cell docutils container">

@@ -248,6 +248,7 @@
 <h1>Wood Study Clustering<a class="headerlink" href="#wood-study-clustering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-preperation-and-initial-clustering">
 <h2>Data preperation and initial clustering<a class="headerlink" href="#data-preperation-and-initial-clustering" title="Permalink to this headline">¶</a></h2>
+<p><strong>Libararies used</strong></p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -321,7 +322,7 @@
       <td>56.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>3</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -330,7 +331,7 @@
       <td>63.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>3</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
@@ -339,7 +340,7 @@
       <td>59.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>3</th>
@@ -348,7 +349,7 @@
       <td>54.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>3</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
@@ -357,7 +358,7 @@
       <td>65.0</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
@@ -385,7 +386,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Total-B/D&#39;)
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_6_1.png" src="_images/Wood_clustering_6_1.png" />
+<img alt="_images/Wood_clustering_7_1.png" src="_images/Wood_clustering_7_1.png" />
 </div>
 </div>
 </div>
@@ -437,7 +438,7 @@
       <td>0.525424</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
@@ -446,7 +447,7 @@
       <td>0.644068</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
@@ -455,7 +456,7 @@
       <td>0.576271</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>3</th>
@@ -464,7 +465,7 @@
       <td>0.491525</td>
       <td>Wood</td>
       <td>Young</td>
-      <td>1</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>4</th>
@@ -487,10 +488,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.68542543, 0.74713697],
-       [0.4817284 , 0.48752354],
-       [0.32802469, 0.75      ],
-       [0.84861111, 0.1970339 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.68977366, 0.74952919],
+       [0.84861111, 0.1970339 ],
+       [0.32556614, 0.7535109 ],
+       [0.48145145, 0.49175447]])
 </pre></div>
 </div>
 </div>
@@ -517,10 +518,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1f078d99dc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24255448f10&gt;
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_14_1.png" src="_images/Wood_clustering_14_1.png" />
+<img alt="_images/Wood_clustering_15_1.png" src="_images/Wood_clustering_15_1.png" />
 </div>
 </div>
 </div>
@@ -539,10 +540,34 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1f079291130&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2425550a310&gt;]
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_18_1.png" src="_images/Wood_clustering_18_1.png" />
+<img alt="_images/Wood_clustering_19_1.png" src="_images/Wood_clustering_19_1.png" />
+</div>
+</div>
+<p>Again the clusters aren’t overlapping and are showing relatively good dense clusters. Unfortuantely the scores aren’t nearer to 1 which is ideal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="s2">&quot;Total-B/D&quot;</span><span class="p">]])</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Difference&quot;</span><span class="p">,</span> <span class="s2">&quot;Total-B/D&quot;</span><span class="p">]],</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Silhouette Score: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Silhouette Score: 0.332
+ Silhouette Score: 0.353
+ Silhouette Score: 0.404
+ Silhouette Score: 0.376
+ Silhouette Score: 0.384
+ Silhouette Score: 0.398
+ Silhouette Score: 0.419
+</pre></div>
+</div>
 </div>
 </div>
 <p>Lastly I wanted to briefly touch on the performance of the different ages. The scatterplot below shows us that the older participants were the bigger lossers but also the biggest gainers. Some of the older participants were blind to the pattern of the B/D cards where others were very quick to realise the two cards that were benfitting them. The younger group were in general more near the mean of the total study.</p>
@@ -554,10 +579,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1f0792acaf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x24255970940&gt;
 </pre></div>
 </div>
-<img alt="_images/Wood_clustering_20_1.png" src="_images/Wood_clustering_20_1.png" />
+<img alt="_images/Wood_clustering_23_1.png" src="_images/Wood_clustering_23_1.png" />
 </div>
 </div>
 </div>

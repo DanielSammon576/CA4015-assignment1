@@ -248,6 +248,7 @@
 <h1>Whole Dataset Clustering<a class="headerlink" href="#whole-dataset-clustering" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="data-preperation-and-clustering">
 <h2>Data preperation and clustering<a class="headerlink" href="#data-preperation-and-clustering" title="Permalink to this headline">¶</a></h2>
+<p><strong>Libraries used</strong></p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -314,7 +315,7 @@
       <td>Fridberg</td>
       <td>1150</td>
       <td>80</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
@@ -324,7 +325,7 @@
       <td>Fridberg</td>
       <td>-675</td>
       <td>71</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
@@ -334,7 +335,7 @@
       <td>Fridberg</td>
       <td>-750</td>
       <td>76</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>3</th>
@@ -344,7 +345,7 @@
       <td>Fridberg</td>
       <td>-525</td>
       <td>76</td>
-      <td>2</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>4</th>
@@ -354,7 +355,7 @@
       <td>Fridberg</td>
       <td>100</td>
       <td>76</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -382,13 +383,14 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;count_zeros&#39;)
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_7_1.png" src="_images/Whole_clustering_7_1.png" />
+<img alt="_images/Whole_clustering_8_1.png" src="_images/Whole_clustering_8_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="normalization-and-refined-clustering">
 <h2>Normalization and refined clustering<a class="headerlink" href="#normalization-and-refined-clustering" title="Permalink to this headline">¶</a></h2>
-<p>Below we can see the dataframe after normalization has taken place.</p>
+<p>Below we can see the dataframe after normalization has taken place. The overall aim of normalization is to manipulate the values of the choosen columns in a particular dataset to a common scale. In machine learning normalization can improve learning rates and can also make weights easier to initialise.
+The main reason I am using normalization in my analysis is that I want to investigate whether it improves model accuracy dramatically or whether the results are very similar. I am also curious to see whether there is one variable that is steering the performance.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">minmax_scale</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s1">&#39;Margin&#39;</span><span class="p">,</span><span class="s1">&#39;count_zeros&#39;</span><span class="p">]])</span>
@@ -436,7 +438,7 @@
       <td>Fridberg</td>
       <td>0.675000</td>
       <td>0.404494</td>
-      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>1</th>
@@ -446,7 +448,7 @@
       <td>Fridberg</td>
       <td>0.446875</td>
       <td>0.303371</td>
-      <td>3</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
@@ -456,7 +458,7 @@
       <td>Fridberg</td>
       <td>0.437500</td>
       <td>0.359551</td>
-      <td>3</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>3</th>
@@ -466,7 +468,7 @@
       <td>Fridberg</td>
       <td>0.465625</td>
       <td>0.359551</td>
-      <td>3</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
@@ -476,7 +478,7 @@
       <td>Fridberg</td>
       <td>0.543750</td>
       <td>0.359551</td>
-      <td>3</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
@@ -489,10 +491,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.31934307, 0.33429017],
-       [0.69183361, 0.31542525],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.69183361, 0.31542525],
+       [0.50055668, 0.34221899],
        [0.53452744, 0.79761579],
-       [0.50055668, 0.34221899]])
+       [0.31934307, 0.33429017]])
 </pre></div>
 </div>
 </div>
@@ -519,10 +521,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25b8109ef40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x268e9917790&gt;
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_13_1.png" src="_images/Whole_clustering_13_1.png" />
+<img alt="_images/Whole_clustering_14_1.png" src="_images/Whole_clustering_14_1.png" />
 </div>
 </div>
 </div>
@@ -550,10 +552,34 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x25b8115ea90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x268e9e820d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_17_1.png" src="_images/Whole_clustering_17_1.png" />
+<img alt="_images/Whole_clustering_18_1.png" src="_images/Whole_clustering_18_1.png" />
+</div>
+</div>
+<p>Below is the silhouette score for these clusters. The silhouette score is a metric used to calculate the efficiency of a certain clustering technique. The closer the the silhouette scores are to 1 means that they are further apart from eachother. The scores below are not below 0 which is good and tells us that there arent any overlapping clusters. The closer to 1 indicates the more dense clusters, which we don’t seem to have in our case.</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">):</span>
+    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">km</span><span class="o">.</span><span class="n">fit_predict</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]])</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">silhouette_score</span><span class="p">(</span><span class="n">clustering</span><span class="p">[[</span><span class="s2">&quot;Margin&quot;</span><span class="p">,</span> <span class="s2">&quot;count_zeros&quot;</span><span class="p">]],</span> <span class="n">km</span><span class="o">.</span><span class="n">labels_</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39; Silhouette Score: </span><span class="si">%.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Silhouette Score: 0.577
+ Silhouette Score: 0.428
+ Silhouette Score: 0.356
+ Silhouette Score: 0.375
+ Silhouette Score: 0.372
+ Silhouette Score: 0.338
+ Silhouette Score: 0.350
+</pre></div>
+</div>
 </div>
 </div>
 <p>Here we have an informative scatterplot of the different studies and the participants. You can clearly see that the subjects from both Steingrover and Wetzels more often than not did not lose money and still gained a respective amount of money. Another interesting observation is that some of the participants that were not receiving many zeros, so as a result were losing money in some cases still gained a large amount of money. This tells us that these participants found the more beneficial cards but reaped the downside to those cards also.</p>
@@ -565,10 +591,10 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x25b8162cdc0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x268e9eb5ac0&gt;
 </pre></div>
 </div>
-<img alt="_images/Whole_clustering_19_1.png" src="_images/Whole_clustering_19_1.png" />
+<img alt="_images/Whole_clustering_22_1.png" src="_images/Whole_clustering_22_1.png" />
 </div>
 </div>
 </div>

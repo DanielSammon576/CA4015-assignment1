@@ -5,6 +5,8 @@
 
 # ### Data preperation and clustering
 
+# **Libraries used**
+
 # In[1]:
 
 
@@ -69,7 +71,8 @@ plt.ylabel("count_zeros")
 
 # ### Normalization and refined clustering
 
-# Below we can see the dataframe after normalization has taken place.
+# Below we can see the dataframe after normalization has taken place. The overall aim of normalization is to manipulate the values of the choosen columns in a particular dataset to a common scale. In machine learning normalization can improve learning rates and can also make weights easier to initialise.
+# The main reason I am using normalization in my analysis is that I want to investigate whether it improves model accuracy dramatically or whether the results are very similar. I am also curious to see whether there is one variable that is steering the performance.
 
 # In[5]:
 
@@ -132,9 +135,22 @@ plt.ylabel("Sum of squared error")
 plt.plot(k_rng, sse)
 
 
-# Here we have an informative scatterplot of the different studies and the participants. You can clearly see that the subjects from both Steingrover and Wetzels more often than not did not lose money and still gained a respective amount of money. Another interesting observation is that some of the participants that were not receiving many zeros, so as a result were losing money in some cases still gained a large amount of money. This tells us that these participants found the more beneficial cards but reaped the downside to those cards also.
+# Below is the silhouette score for these clusters. The silhouette score is a metric used to calculate the efficiency of a certain clustering technique. The closer the the silhouette scores are to 1 means that they are further apart from eachother. The scores below are not below 0 which is good and tells us that there arent any overlapping clusters. The closer to 1 indicates the more dense clusters, which we don't seem to have in our case. 
 
 # In[10]:
+
+
+from sklearn.metrics import silhouette_score
+for n in range(2, 9):
+    km = KMeans(n_clusters=n)
+    km.fit_predict(clustering[["Margin", "count_zeros"]])
+    value = silhouette_score(clustering[["Margin", "count_zeros"]], km.labels_, metric='euclidean')
+    print(' Silhouette Score: %.3f' % value)
+
+
+# Here we have an informative scatterplot of the different studies and the participants. You can clearly see that the subjects from both Steingrover and Wetzels more often than not did not lose money and still gained a respective amount of money. Another interesting observation is that some of the participants that were not receiving many zeros, so as a result were losing money in some cases still gained a large amount of money. This tells us that these participants found the more beneficial cards but reaped the downside to those cards also.
+
+# In[11]:
 
 
 sns.scatterplot(data=clustering, x="Margin", y="count_zeros", hue="Study")
